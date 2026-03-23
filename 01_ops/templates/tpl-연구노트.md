@@ -5,7 +5,7 @@ area: ops
 status: draft
 created:
 tags:
-  - research/
+  - research/notes
 up: "[[MOC-운영]]"
 ---
 

@@ -3,7 +3,7 @@ title: "{세션 식별자} 세션 기록 — {제목}"
 kind: session-record
 area: sessions
 status: live
-created: {{date:YYYY-MM-DD}}
+created: YYYY-MM-DD
 session_id: ""
 up: "[[MOC-세션]]"
 plan: "[[{슬러그}-plan]]"

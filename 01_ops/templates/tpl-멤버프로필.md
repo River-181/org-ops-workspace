@@ -1,9 +1,9 @@
 ---
 title: "{이름} 프로필"
 kind: member
-area: library
+area: ops
 status: live
-created: {{date:YYYY-MM-DD}}
+created: YYYY-MM-DD
 up: "[[05_library/members/README]]"
 role: ""
 pkm_tools: []
