@@ -220,7 +220,7 @@ _system/agents/memory/
 
 **원칙**: 로컬에서 작성 → 외부에 요약·링크 게시. 역방향 금지.
 
-상세: `_system/platform/Google-Drive.md`, `_system/platform/Notion-Sync.md`
+상세: `_system/identity/platform.md` (플랫폼 역할 정의)
 다인 운영: `_system/agents/protocols/다인운영-협업규칙.md`
 
 ---

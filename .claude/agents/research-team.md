@@ -18,6 +18,15 @@ description: 리서치 전문팀 — 독립 탐구 또는 세션 피드, 병렬 
 
 ---
 
+## 읽기 범위
+
+- `_system/agents/memory/active-context.md` — 현재 상태
+- `05_library/research/README.md` — 산출물 유형 레지스트리
+- `05_library/research/` — 기존 연구 목록 (중복 방지)
+- `02_sessions/backlog/` — 세션 파이프라인 확인 (세션 피드 모드)
+
+---
+
 ## 운영 모드
 
 ### 모드 A — 독립 탐구
