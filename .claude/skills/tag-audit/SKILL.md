@@ -32,7 +32,7 @@ platform/, role/, season/, type/, system/
 
 | 검사 | 기준 | 심각도 |
 |------|------|--------|
-| 미등록 네임스페이스 | 등록된 네임스페이스 외의 접두사 | WARNING |
+| 미등록 네임스페이스 | 등록된 8개 외의 접두사 | WARNING |
 | 오타 의심 | 레벤슈타인 거리 1~2인 유사 태그 | INFO |
 | 빈 태그 | `tags:` 필드가 있지만 값이 비어 있음 | WARNING |
 | 태그 없음 | `tags:` 필드 자체가 없는 활성 문서 | INFO |
@@ -42,7 +42,7 @@ platform/, role/, season/, type/, system/
 미등록 태그 중 **올바른 네임스페이스를 가진 것**은 레지스트리에 추가할 후보로 제안한다.
 
 판단 기준:
-- 네임스페이스가 등록된 것 중 하나 → 추가 후보
+- 네임스페이스가 등록된 10개 중 하나 → 추가 후보
 - 네임스페이스 자체가 새것 → 사용자 확인 후 네임스페이스 신설 필요
 
 출력 예시:
@@ -51,7 +51,7 @@ platform/, role/, season/, type/, system/
 | 태그 | 분류 | 사용 파일 수 | 제안 설명 |
 |------|------|------------|---------|
 | role/connector | role/ | 3 | Connector 역할 |
-| session/plan | session/ | 2 | 세션 기획 |
+| session/S04 | session/ | 2 | S04 세션 |
 ```
 
 사용자가 승인하면 `_system/obsidian/tag-registry.md`에 해당 행을 추가한다.
@@ -84,5 +84,5 @@ platform/, role/, season/, type/, system/
 
 ## 주의사항
 
-- `05_library/seasons/` 아카이브는 스캔에서 제외한다.
+- `05_library/seasons/2025-pre/` 아카이브는 스캔에서 제외한다.
 - 태그 수정은 `@frontmatter-doctor` 에이전트가 수행한다.

@@ -1,6 +1,6 @@
 ---
 name: member-onboard
-description: 새 멤버 운영 DB 파일 생성
+description: 새 멤버 운영 DB 파일 생성 + PKM 작업공간 안내
 argument-hint: "[이름]"
 ---
 
@@ -9,7 +9,7 @@ argument-hint: "[이름]"
 ## 목적
 
 새 멤버의 운영 프로필(`01_ops/members/`)을 생성하고,
-볼트 이용 방법을 안내한다.
+PKM 작업공간(`05_library/members/`) 이용 방법을 안내한다.
 
 ## 멤버 파일 구조 (두 레이어)
 
@@ -20,12 +20,9 @@ argument-hint: "[이름]"
 
 ## 절차
 
-### 1. 신청 데이터 확인
-
-해당 멤버의 기본 정보를 확인한다:
-- 이름, 연락처, PKM 도구 경험, AI 사용 여부, IT 관심도, 관심사
-
-데이터 위치는 조직에 맞게 설정 (예: 신청 폼 응답, 스프레드시트).
+### 1. 신청폼 데이터 확인
+`01_ops/members/2026031-신청폼응답.xlsx`에서 해당 멤버 행 확인:
+- 이름, 학번, 전화번호, PKM 도구, AI 사용 여부, IT 관심도, 관심사
 
 ### 2. 운영 DB 파일 생성
 `01_ops/templates/tpl-멤버프로필.md` 복사 → `01_ops/members/{이름}.md`
@@ -38,13 +35,18 @@ area: ops
 status: live
 created: {오늘 날짜}
 up: "[[INDEX-MEMBER]]"
-role: "[[Explorer]]"        # 조직 역할에 따라 변경
+role: "[[Explorer]]"        # Discord 역할에 따라 변경
+season: S{N}
+student_id: "{학번}"
+phone: "{전화번호}"
 pkm_tools:
-  - (조직에 맞게 설정)
-ai_user: false
-it_interest: 3              # 1–5 척도
-interests: []
+  - 노션                    # 신청폼 응답 기반
+ai_user: false              # 신청폼 응답 기반
+it_interest: 3              # 1–5 척도, 신청폼 응답 기반
+interests:
+  - 정보/지식공유           # 신청폼 "하고싶은 것" 기반 정제
 tags:
+  - season/2026-S{N}
   - role/explorer
 ---
 ```
@@ -60,11 +62,16 @@ SORT file.ctime ASC
 → 세션 종료 후 record.md에 `participants:` 추가하면 자동 반영.
 
 ### 3. 역할 배정
-- 조직의 역할 체계에 따라 `role:` 필드 설정
+- Discord에서 역할 확인: `_system/platform/Discord/roles/`
+- 운영진: `role: "[[Guide]]"`, `tag: role/guide`
+- 일반: `role: "[[Explorer]]"`, `tag: role/explorer`
 - INDEX-MEMBER.md의 멤버 링크 목록에 추가
 
 ### 4. 세션 Backlink 확인
-이미 진행된 세션 record.md의 `participants:`에 이름 추가.
+이미 진행된 세션 record.md의 `participants:`에 이름 추가:
+```bash
+obsidian property:set name="participants" value="[...]" path="02_sessions/S{NN}-{제목}/record.md"
+```
 
 ### 5. PKM 작업공간 안내 (선택)
 멤버가 볼트에 직접 접근하는 경우, `05_library/members/README.md`의
@@ -72,6 +79,6 @@ SORT file.ctime ASC
 
 ## 주의사항
 
-- 개인 연락처 등 민감 정보는 운영 DB에만 존재 — PKM 작업공간에 개인정보 기록 금지
+- `phone:` 필드는 운영 DB에만 존재 — PKM 작업공간에 개인정보 기록 금지
 - `participants:` 는 record.md에만 — plan.md에는 넣지 않는다
 - 역할 변경 시 `role:` 필드와 `tags:` 모두 업데이트

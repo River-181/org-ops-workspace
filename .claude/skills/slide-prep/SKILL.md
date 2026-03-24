@@ -13,7 +13,7 @@ argument-hint: "[슬라이드 파일 경로]"
 
 ## 입력
 
-- **파일 경로**: 대상 슬라이드 MD 파일 (예: `02_sessions/{슬러그}/materials/슬라이드.md`)
+- **파일 경로**: 대상 슬라이드 MD 파일 (예: `02_sessions/S01-.../materials/슬라이드.md`)
 
 인자가 없으면 사용자에게 경로를 물어본다.
 
@@ -34,21 +34,33 @@ argument-hint: "[슬라이드 파일 경로]"
 ```markdown
 ## 디자인 스펙
 
-> 조직의 브랜드 가이드를 참조하여 값을 채운다.
-> 브랜드 가이드 위치: `04_studio/brand/` 또는 `_system/identity/brand.md`
-
 | 항목 | 값 |
 |------|-----|
 | 규격 | 1920 × 1080px (16:9) |
-| 배경 | (조직 색상) |
-| 강조색 | (조직 색상) |
-| 제목 폰트 | (조직 폰트) |
-| 본문 폰트 | (조직 폰트) |
+| 배경 | Space Black `#000000` |
+| 강조색 | Odyssey Purple `#7C3AED` |
+| 보조색 | Cosmic Blue-White `#B4DCFF` |
+| 제목 폰트 | Noto Serif KR Bold |
+| 본문 폰트 | Pretendard Regular / Medium |
+| 영문 UI 폰트 | Inter |
+| 코드 폰트 | JetBrains Mono |
+
+### 슬라이드 유형별 스타일
+
+| 유형 | 설명 |
+|------|------|
+| 섹션 타이틀 | 중앙 정렬, 대형 제목, 배경 이미지/그라디언트 |
+| 콘텐츠 | 왼쪽 텍스트 + 오른쪽 비주얼 (60/40) |
+| 풀 이미지 | 배경 전체 이미지, 텍스트 오버레이 |
+| 다이어그램 | 다이어그램 중심, 캡션 최소화 |
+| 클로징 | 섹션 타이틀과 동일 포맷 |
 
 ### 파트 구조
 
 {슬라이드 파트 구조를 파일 내용에서 파악하여 여기에 채운다}
 ```
+
+> 색상 HEX는 `04_studio/brand/260312-디자인가이드.md` 참조 (변경되었을 수 있음)
 
 ### 3. 이미지 가이드 콜아웃 삽입
 
@@ -56,7 +68,7 @@ argument-hint: "[슬라이드 파일 경로]"
 
 ```markdown
 > [!tip] 📸 이미지 가이드
-> - **배경**: 검색어: `{검색어}`
+> - **배경**: Unsplash 검색어: `{검색어}`
 > - **배치**: {위치 설명}
 > - **출처**: {Unsplash / 직접 촬영 / 스크린샷}
 ```
@@ -65,29 +77,30 @@ argument-hint: "[슬라이드 파일 경로]"
 
 | 슬라이드 성격 | 이미지 유형 |
 |-------------|-----------|
-| 감성·무드 오프닝/클로징 | 배경 이미지 |
+| 감성·무드 오프닝/클로징 | Unsplash 배경 이미지 |
 | 도구 소개 (Notion, Obsidian 등) | 실제 스크린샷 |
 | 진행자 소개 | 진행자 사진 |
 | 장소·현장 분위기 | 공간 사진 |
 | 개념 설명 텍스트만으로 충분 | 생략 |
 
-### 4. 다이어그램 프롬프트 삽입
+### 4. Gemini 다이어그램 프롬프트 삽입
 
 관계·구조·흐름이 복잡한 슬라이드 바로 아래에 삽입:
 
 ```markdown
-> [!example]- 🤖 다이어그램 프롬프트
+> [!example]- 🤖 Gemini 다이어그램 프롬프트
 > ```
 > Create a {diagram type} for a presentation slide.
-> Canvas: 1920×1080px, dark background.
+> Canvas: 1920×1080px, dark background #000000.
 > {구조 설명 — 레이어, 노드, 흐름 등}
-> Style: clean, minimal, modern. No decorative elements.
+> Color palette: purple #7C3AED, blue-white #B4DCFF, white #FFFFFF.
+> Style: clean, minimal, modern. No decorative elements. Font: Inter.
 > ```
 ```
 
 **삽입 기준 — 다이어그램이 필요한 슬라이드 유형:**
-- 레이어드 아키텍처 (시스템 구조)
-- 관계 다이어그램
+- 레이어드 아키텍처 (PKM 스택, 시스템 구조)
+- 관계 다이어그램 (팬인/팬아웃, 버블차트)
 - 타임라인·로드맵
 - 비교 구조 (툴 비교, 방법론 비교)
 
@@ -106,9 +119,10 @@ argument-hint: "[슬라이드 파일 경로]"
 |------|------|
 | 디자인 스펙 섹션 | ✓ / 추가됨 |
 | 이미지 가이드 콜아웃 | N개 슬라이드 |
-| 다이어그램 프롬프트 콜아웃 | N개 슬라이드 |
+| Gemini 프롬프트 콜아웃 | N개 슬라이드 |
 | 플레이스홀더 교체 | ✓ / N개 미처리 |
 
 ## 참고
 
-- 브랜드 색상: `04_studio/brand/` 또는 `_system/identity/brand.md`
+- 브랜드 색상: `04_studio/brand/260312-디자인가이드.md`
+- 사례 파일: `02_sessions/S00-OT/materials/클럽소개-슬라이드.md`

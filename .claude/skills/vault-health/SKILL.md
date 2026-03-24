@@ -7,13 +7,13 @@ description: 네이밍·메타데이터·링크·깊이 위생 점검
 
 ## 목적
 
-볼트의 구조적 건강 상태를 점검하고 문제를 보고한다.
+[볼트명] 볼트의 구조적 건강 상태를 점검하고 문제를 보고한다.
 
 ## 절차
 
 ### 1. 파일명 규칙 점검
 - 모든 .md 파일이 `YYMMDD-제목.md` 형식을 따르는지 확인한다.
-- 예외: `tpl-`, `README.md`, `CLAUDE.md`, `plan.md`, `record.md`
+- 예외: `tpl-`, `README.md`, `CLAUDE.md`, `SKILL.md`, `MAP-스킬.md`, `S{NN}-*-plan.md`, `S{NN}-*-record.md`
 - 위반 파일 목록을 작성한다.
 - 구 네이밍(`OPS-DOC-`, `_live`, `_arch` 접미사) 잔존 여부를 확인한다.
 
@@ -51,7 +51,7 @@ description: 네이밍·메타데이터·링크·깊이 위생 점검
   - `CLAUDE.md`, `README.md` (볼트 루트)
   - `MOC-홈.md` (최상위 허브, 의도적으로 up: 없음)
   - `01_ops/templates/tpl-*.md` (템플릿은 빈 상태가 정상)
-  - `05_library/seasons/` 아카이브 전체
+  - `05_library/seasons/2025-pre/` 아카이브 전체
 - 위반 파일은 CRITICAL로 보고.
 
 ### 9. 고아 파일 점검
@@ -79,7 +79,7 @@ description: 네이밍·메타데이터·링크·깊이 위생 점검
   ```
 - **미등록 태그**: 레지스트리에 없는 태그 → WARNING
 - **사용 안 된 태그**: 레지스트리에는 있지만 볼트에서 0번 사용 → INFO
-- `05_library/seasons/` 아카이브의 태그는 검사 제외.
+- `05_library/seasons/2025-pre/` 아카이브의 태그는 검사 제외.
 
 ### 11. 보고서 생성
 - 출력: `01_ops/reviews/YYMMDD-볼트점검.md`
@@ -93,5 +93,5 @@ description: 네이밍·메타데이터·링크·깊이 위생 점검
 
 ## 주의사항
 
-- `05_library/seasons/` 아카이브는 구명칭이 남아 있어도 WARNING으로만 보고.
-- `_system/` 거버넌스 파일(CLAUDE.md, rules.md)은 직접 수정하지 않고 보고만 한다.
+- `05_library/seasons/2025-pre/` 아카이브는 구명칭이 남아 있어도 WARNING으로만 보고.
+- `_system/` 거버넌스 파일(CLAUDE.md, rules.md, identity/ 폴더)은 직접 수정하지 않고 보고만 한다.

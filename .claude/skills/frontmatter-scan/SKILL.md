@@ -15,7 +15,7 @@ allowed-tools: Read, Glob, Grep
 ### 1. 대상 파일 수집
 
 - 전체 볼트에서 `.md` 파일을 수집한다.
-- 제외: `.claude/`, `.obsidian/`, `05_library/seasons/`
+- 제외: `.claude/`, `.obsidian/`, `05_library/seasons/2025-pre/`
 
 ### 2. 필드별 채택률
 

@@ -10,7 +10,7 @@ argument-hint: "[세션 폴더 경로] (예: 02_sessions/S00-OT)"
 
 세션이 끝난 뒤 **3단계 마무리**를 한 번에 완료한다:
 
-1. `{슬러그}-record.md` 내용 채우기
+1. `S{NN}-{슬러그}-record.md` 내용 채우기
 2. 세션 폴더 파일 정리 (이름, title property, status)
 3. 에이전트 메모리 갱신 (active-context, change-log)
 
@@ -20,7 +20,7 @@ record.md는 **실제 일어난 것**의 기록이며, plan.md(설계)와 구분
 
 ## record.md vs plan.md
 
-| | {슬러그}-plan.md | {슬러그}-record.md |
+| | S{NN}-{슬러그}-plan.md | S{NN}-{슬러그}-record.md |
 |-|---------|-----------|
 | 성격 | 설계·의도 | 실제·결과 |
 | participants | ✗ | ✓ (실제 참석자) |
@@ -34,53 +34,60 @@ record.md는 **실제 일어난 것**의 기록이며, plan.md(설계)와 구분
 
 ### 1. 세션 폴더 파악
 
-직접 경로 확인: `02_sessions/{슬러그}/`
+```bash
+# 폴더 내 파일 목록 확인
+obsidian vault="[볼트명]" search query="session_id: S{NN}" limit=10
+```
+
+또는 직접 경로 확인: `02_sessions/S{NN}-{슬러그}/`
 
 기대 구조:
 ```
-{슬러그}/
-├── {슬러그}-plan.md      ← 기획안 (이미 존재)
-├── {슬러그}-record.md    ← 오늘 채울 파일
+S{NN}-{슬러그}/
+├── S{NN}-{슬러그}-plan.md      ← 기획안 (이미 존재)
+├── S{NN}-{슬러그}-record.md    ← 오늘 채울 파일
 └── materials/
     ├── 슬라이드.md
     └── 스크립트.md
 ```
 
-`{슬러그}-record.md`가 없으면 `01_ops/templates/tpl-세션기록.md` 복사해 생성.
+`S{NN}-{슬러그}-record.md`가 없으면 `01_ops/templates/tpl-세션기록.md` 복사해 생성.
 
 ---
 
-### 2. {슬러그}-record.md Frontmatter 채우기
+### 2. S{NN}-{슬러그}-record.md Frontmatter 채우기
 
 ```yaml
 ---
-title: "{세션 식별자} 세션 기록 — {제목}"
+title: "S{NN} 세션 기록 — {제목}"
 kind: session-record
 area: sessions
 status: live
 created: {세션 날짜}
-session_id: "{세션 식별자}"
+session_id: "S{NN}"
 up: "[[MOC-세션]]"
-plan: "[[{슬러그}-plan]]"
+plan: "[[S{NN}-{슬러그}-plan]]"
 participants:
-  - "(참석자 이름)"
+  - "[[김주용]]"
+  - "[[이윤영]]"
   - ...
 materials:
-  - "[[materials/슬라이드]]"
+  - "[[materials/클럽소개-슬라이드]]"
 tags:
+  - session/S{NN}
   - session/record
 ---
 ```
 
 > **participants는 record 파일에만 존재한다.** plan 파일에는 넣지 않는다.
-> `plan:` 링크는 반드시 `"[[{슬러그}-plan]]"` — 슬러그 그대로.
+> `plan:` 링크는 반드시 `"[[S{NN}-{슬러그}-plan]]"` — 번호+슬러그 모두 포함.
 
 ---
 
 ### 3. 본문 섹션 채우기
 
 **발표 / 자료 섹션**
-- 파일 공유 링크, materials/ 파일 wikilink, 외부 URL 모두 기록
+- Google Drive 링크, materials/ 파일 wikilink, 외부 URL 모두 기록
 - 자료 형식 (슬라이드/핸드아웃/영상) 명시
 
 **실제 진행 내용**
@@ -88,12 +95,12 @@ tags:
 - 예상치 못한 토론, 시간 초과, 생략 항목 포함
 
 **피드백**
-- 수집 내용 정리
+- 구글폼 / 카카오톡 / Discord 수집 내용 정리
 - 익명 의견: 내용만 / 기명 의견: `[[이름]]` 링크 사용 가능
 - 수집 없으면 "수집 안 됨" 명시
 
 **회고**
-- 운영진 함께 작성 권장
+- 운영진 2인 함께 작성 권장
 - **수치 지표 테이블** 반드시 채우기 — 시즌 말 aggregate에 사용
 
 ---
@@ -104,16 +111,27 @@ tags:
 
 ```bash
 # 세션이 완료됐으므로 plan도 archived
-obsidian vault="볼트이름" property:set name="status" value="archived" \
-  path="02_sessions/{슬러그}/{슬러그}-plan.md" silent
+obsidian vault="[볼트명]" property:set name="status" value="archived" \
+  path="02_sessions/S{NN}-{슬러그}/S{NN}-{슬러그}-plan.md" silent
 ```
 
 #### 4-2. record.md title property 확인
 
 ```bash
-obsidian vault="볼트이름" property:set name="title" \
-  value="{세션 식별자} 세션 기록 — {제목}" \
-  path="02_sessions/{슬러그}/{슬러그}-record.md" silent
+obsidian vault="[볼트명]" property:set name="title" \
+  value="S{NN} 세션 기록 — {제목}" \
+  path="02_sessions/S{NN}-{슬러그}/S{NN}-{슬러그}-record.md" silent
+```
+
+#### 4-3. materials 파일 title 정리
+
+각 materials 파일에도 `title:` 값이 `S{NN} {파일명}` 형태로 있는지 확인.
+없거나 기본값이면:
+
+```bash
+obsidian vault="[볼트명]" property:set name="title" \
+  value="S{NN} 클럽소개 슬라이드" \
+  path="02_sessions/S{NN}-{슬러그}/materials/클럽소개-슬라이드.md" silent
 ```
 
 ---
@@ -127,8 +145,8 @@ obsidian vault="볼트이름" property:set name="title" \
 ```markdown
 ## YYYY-MM-DD
 
-- {세션 식별자} 세션 완료
-  - 참가자: {N}명
+- S{NN} 세션 완료
+  - 참가자: {N}명 ({이름 목록})
   - 주요 내용: {한 줄 요약}
   - 다음 액션: {있으면 기재}
 ```
@@ -137,14 +155,23 @@ obsidian vault="볼트이름" property:set name="title" \
 
 `_system/agents/memory/active-context.md` 에서:
 - 세션 상태를 "완료"로 변경
-- 다음 세션 또는 후속 액션 반영
+- 다음 세션(S{NN+1}) 또는 후속 액션 반영
 - 전체 파일 **덮어쓰기** (항상 최신 상태만 유지)
+
+---
+
+### 6. 멤버 파일 확인
+
+각 참석자 프로필 `01_ops/members/{이름}.md`의 Dataview 쿼리
+`WHERE contains(participants, [[이름]])` 이 이 record를 자동 집계함.
+별도 수동 연결 불필요.
 
 ---
 
 ## 완성 기준
 
 - [ ] frontmatter: title, participants, plan, session_id, materials, status: live 채워짐
+- [ ] `plan:` 링크가 `"[[S{NN}-{슬러그}-plan]]"` 형태 (번호+슬러그 모두 포함)
 - [ ] 발표 자료 링크 모두 기록
 - [ ] 피드백 섹션 존재 (없으면 "수집 안 됨")
 - [ ] 회고 섹션 + 수치 지표 채워짐
@@ -159,13 +186,15 @@ obsidian vault="볼트이름" property:set name="title" \
 - 회고는 세션 당일 또는 다음 날까지 — 기억이 흐릿해지기 전에
 - 피드백에 개인 식별 정보 포함 금지
 - materials/ 파일이 아직 없으면 링크만 걸고 나중에 생성
+- 세션 번호 접두사(`S{NN}-`) 없는 파일이 있으면 obsidian CLI `rename`으로 변경
+  (wikilink 자동 업데이트됨)
 
 ---
 
 ## 세션 수명주기
 
 ```
-session-setup → {슬러그}-plan.md 작성 → 세션 진행 → session-record
+session-setup → S{NN}-{슬러그}-plan.md 작성 → 세션 진행 → session-record
 ```
 
 관련 스킬: `session-setup`, `slide-prep`, `session-launch`, `memory-update`
