@@ -13,6 +13,19 @@ created: 2026-03-24
 
 ---
 
+## 2026-03-24 — v1.2.1: 에이전트·스킬 내용 업데이트
+
+### 변경 내용
+
+- 에이전트 12개 최신화 (ops, prep, record, research, publish, ot-session, session-team, research-team, studio-team, architect, graph-weaver, frontmatter-doctor)
+- 스킬 13개 최신화 (session-setup, weekly-review, vault-health, session-launch, session-record, member-onboard, memory-update, slide-prep, link-audit, tag-audit, frontmatter-scan, clean-sweep, progress-update)
+
+### 마이그레이션 노트
+
+없음 (내용 업데이트만, 구조 변경 없음)
+
+---
+
 ## 2026-03-24 — v1.2.0: 스킬 폴더 구조 + maps/ + 프론트매터 v3
 
 ### 변경 내용
