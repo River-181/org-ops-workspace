@@ -1,4 +1,5 @@
 ---
+name: session-record
 description: 세션 종료 후 전체 마무리 — record.md 작성, 파일 정리, 메모리 갱신
 argument-hint: "[세션 폴더 경로] (예: 02_sessions/S00-OT)"
 ---

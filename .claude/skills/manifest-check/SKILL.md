@@ -1,4 +1,5 @@
 ---
+name: manifest-check
 description: 볼트설정 매니페스트 ↔ .obsidian/ 실제 설정 비교 — 불일치 항목 보고
 allowed-tools: Read, Glob, Grep, Bash
 ---

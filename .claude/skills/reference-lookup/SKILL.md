@@ -1,4 +1,5 @@
 ---
+name: reference-lookup
 description: _system/reference/에서 특정 주제의 레퍼런스를 검색하여 반환
 argument-hint: "[검색어]"
 allowed-tools: Read, Glob, Grep

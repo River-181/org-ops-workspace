@@ -1,4 +1,5 @@
 ---
+name: weekly-review
 description: 볼트 전체 스캔 → 주간 현황 보고 생성
 ---
 

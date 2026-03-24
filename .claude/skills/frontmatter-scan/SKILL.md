@@ -1,4 +1,5 @@
 ---
+name: frontmatter-scan
 description: frontmatter 완성도 빠른 스캔 — 필드별 채택률, 폴더별 준수율 통계
 allowed-tools: Read, Glob, Grep
 ---

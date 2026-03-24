@@ -1,4 +1,5 @@
 ---
+name: member-onboard
 description: 새 멤버 운영 DB 파일 생성
 argument-hint: "[이름]"
 ---

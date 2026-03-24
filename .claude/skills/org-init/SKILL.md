@@ -1,4 +1,5 @@
 ---
+name: org-init
 description: 새 조직 볼트 초기 세팅 — 정체성 파일 생성 + 폴더 구조 적용
 ---
 

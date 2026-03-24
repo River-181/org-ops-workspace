@@ -1,4 +1,5 @@
 ---
+name: clean-sweep
 description: 볼트 위생 정리 — Icon 파일, 빈 폴더, .DS_Store, 중복 파일 탐지 및 삭제 제안
 ---
 

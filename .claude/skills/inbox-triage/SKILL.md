@@ -1,4 +1,5 @@
 ---
+name: inbox-triage
 description: 06_inbox 파일 분류 및 라우팅 제안
 ---
 

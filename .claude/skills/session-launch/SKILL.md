@@ -1,4 +1,5 @@
 ---
+name: session-launch
 description: 세션 D-N일 기준 준비 상태 점검 + 당일 체크리스트 생성
 argument-hint: "[세션 폴더 경로] [D-N]"
 ---

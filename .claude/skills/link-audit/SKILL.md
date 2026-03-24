@@ -1,4 +1,5 @@
 ---
+name: link-audit
 description: 볼트 그래프 연결성 진단 — 고아 파일, 단절 군집, up 누락, 플랫폼 종속 단절 보고
 allowed-tools: Read, Glob, Grep
 ---

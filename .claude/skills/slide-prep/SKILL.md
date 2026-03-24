@@ -1,4 +1,5 @@
 ---
+name: slide-prep
 description: 슬라이드 MD 파일을 외주자/AI 툴이 바로 사용할 수 있는 완성본으로 만든다
 argument-hint: "[슬라이드 파일 경로]"
 ---

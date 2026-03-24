@@ -1,4 +1,5 @@
 ---
+name: progress-update
 description: 활성 프로젝트의 PROGRESS.md를 현재 세션 작업 결과로 갱신
 ---
 

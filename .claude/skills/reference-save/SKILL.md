@@ -1,4 +1,5 @@
 ---
+name: reference-save
 description: 조사 결과를 _system/reference/에 저장하고 인덱스(README)를 갱신
 argument-hint: "[주제명]"
 ---

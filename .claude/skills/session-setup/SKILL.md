@@ -1,4 +1,5 @@
 ---
+name: session-setup
 description: 세션 폴더 + 기획안 + 체크리스트 자동 생성
 argument-hint: "[세션번호 또는 날짜] [제목]"
 ---

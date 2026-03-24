@@ -1,4 +1,5 @@
 ---
+name: tag-audit
 description: 태그 일관성 진단 — 미등록 태그, 네임스페이스 위반, 오타 의심 보고
 allowed-tools: Read, Glob, Grep
 ---

@@ -1,4 +1,5 @@
 ---
+name: memory-update
 description: 에이전트 메모리(active-context, change-log, decisions) 갱신
 ---
 

@@ -1,4 +1,5 @@
 ---
+name: vault-health
 description: 네이밍·메타데이터·링크·깊이 위생 점검
 ---
 
