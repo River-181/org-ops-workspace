@@ -13,6 +13,32 @@ created: 2026-03-24
 
 ---
 
+## 2026-03-26 — v1.3.0: 플랫폼 자동화 스킬 — Discord + Notion 발행 워크플로우
+
+### 변경 내용
+
+**신규 스킬 3개**
+- `/platform-setup` — Discord 봇 + Notion API 초기 연결을 AI가 단계별로 안내. `.env` 자동 생성 + 연결 테스트 포함
+- `/drop-publish` — `drop_status: ready` 파일을 Discord #share + Notion Drops DB에 동시 발행. `drops.csv` 자동 갱신
+- `/discord-announce` — 채널 유형(ops/announce/showcase)별 Discord 공지 초안 생성
+
+**환경변수 템플릿**
+- `_system/tools/.env.template` 신설 — 플랫폼 연결에 필요한 모든 환경변수 문서화
+- `DISCORD_USER_{이름}` 패턴 — 운영자 멘션 매핑 (하드코딩 없이 `.env`에서 동적 로드)
+
+**`/org-init` 완료 메시지 업데이트**
+- 초기화 완료 후 `/platform-setup` 안내 추가
+
+### 마이그레이션 노트
+
+신규 기능 — 기존 설정에 영향 없음.
+
+Discord + Notion 자동화를 쓰려면:
+1. `/platform-setup` 실행 (AI가 단계별 안내)
+2. 이후 `/drop-publish` 사용 가능
+
+---
+
 ## 2026-03-24 — v1.2.1: 에이전트·스킬 내용 업데이트
 
 ### 변경 내용
