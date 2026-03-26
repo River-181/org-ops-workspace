@@ -333,10 +333,12 @@ created: [오늘 날짜]
 세션 패턴: [subfolder_pattern]
 
 다음 단계:
+→ /platform-setup    — Discord 봇 + Notion API 연결 (AI가 단계별 안내)
 → /session-setup     — 첫 [session_type] 폴더 생성
 → @ops               — 주간 리뷰 또는 운영 시작
 → @prep              — 세션 기획 시작
 
+Discord·Notion 자동화를 쓰려면 /platform-setup을 먼저 실행하세요.
 _system/identity/ 파일을 직접 편집해 언제든 수정할 수 있습니다.
 ```
 
