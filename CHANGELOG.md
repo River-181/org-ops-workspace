@@ -13,6 +13,47 @@ created: 2026-03-24
 
 ---
 
+## 2026-04-14 — v1.4.0: 장기기억 시스템 + 신규 스킬 7종 + Obsidian 인프라 확장
+
+### 변경 내용
+
+**신규 스킬 7종**
+- `session-guard` — 세션 시작·종료 프로토콜
+- `update-governance` — 변경사항 라우팅 판단
+- `verify-implementation` — 볼트 통합 검증 (4개 스킬 순차 실행)
+- `tag-register` — 태그 공식 등록 + decisions/ 기록
+- `week-promote` — 검증된 패턴을 MEMORY.md로 승격
+- `drop-announce` — Drop 공지 자동화 (Excalidraw + Discord + Notion)
+- `release` — 릴리즈 자동화 (git push + GitHub release + Discord 공지)
+
+**장기기억 시스템**
+- `_system/agents/memory/MEMORY.md` — 장기기억 1차 인터페이스 (스텁)
+- `_system/agents/memory/long-term/` — 운영 패턴·조직 프로필·시즌 회고 구조 (스텁)
+
+**에이전트 업데이트**
+- `ops`, `research`, `research-team`, `studio-team` 에이전트 개선
+- `memory-update` 스킬 대폭 재작성
+
+**Obsidian 인프라 확장**
+- `_system/obsidian/bases/` — Base 파일 추가
+- `_system/obsidian/design/` — 설계 문서 추가
+- `_system/obsidian/kanban/` — 칸반 보드 추가
+- `_system/obsidian/dashboards/` — 대시보드 추가
+- `_system/obsidian/maps/`, `mocs/`, `audits/` 갱신
+
+**템플릿 + 기타**
+- `01_ops/templates/tpl-drop.md` 추가
+- `tag-registry.md` 네임스페이스 구조 초기화
+- `_system/rules.md` 업데이트
+
+### 마이그레이션 노트
+
+- 신규 스킬은 `.claude/skills/{name}/SKILL.md` 폴더 구조로 추가됨
+- 장기기억은 빈 스텁 제공 — 운영 후 `/memory-update`로 채울 것
+- `tag-registry.md`는 네임스페이스만 정의 — `/tag-register`로 태그 추가
+
+---
+
 ## 2026-03-26 — v1.3.0: 플랫폼 자동화 스킬 — Discord + Notion 발행 워크플로우
 
 ### 변경 내용
