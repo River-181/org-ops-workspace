@@ -1,0 +1,73 @@
+filters:
+  and:
+    - file.inFolder("03_projects")
+    - kind == "project"
+    - up == link("MOC-프로젝트")
+properties:
+  title:
+    displayName: 프로젝트명
+  project_id:
+    displayName: ID
+  project_status:
+    displayName: 진행상태
+  project_type:
+    displayName: 타입
+  owner:
+    displayName: 담당
+  status:
+    displayName: 문서상태
+  created:
+    displayName: 생성
+  updated:
+    displayName: 수정
+views:
+  - type: table
+    name: 프로젝트 레지스트리
+    order:
+      - title
+      - project_id
+      - project_status
+      - project_type
+      - owner
+      - status
+      - created
+      - updated
+    sort:
+      - property: created
+        direction: ASC
+    columnSize:
+      note.title: 240
+  - type: table
+    name: 상태별
+    groupBy:
+      property: project_status
+      direction: ASC
+    order:
+      - title
+      - project_id
+      - owner
+      - project_type
+      - status
+      - updated
+  - type: table
+    name: 타입별
+    groupBy:
+      property: project_type
+      direction: ASC
+    order:
+      - title
+      - project_id
+      - project_status
+      - owner
+      - updated
+  - type: table
+    name: 담당별
+    groupBy:
+      property: owner
+      direction: ASC
+    order:
+      - title
+      - project_id
+      - project_status
+      - project_type
+      - updated

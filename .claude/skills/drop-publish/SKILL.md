@@ -90,10 +90,10 @@ mention = f"<@{author_ids[author]}>" if author in author_ids else ""
 
 {## 링크 내용}
 
-[ 공유 | #{drop_number} ]{" — " + mention if mention else ""}
+[ Drop | #{drop_number} ]{" — " + mention if mention else ""}
 ```
 
-예: `[ 공유 | #0017 ] — <@{ID1}>`
+예: `[ 공유 | #0017 ] — <@286397219886858240>`
 
 ### API 호출
 
@@ -109,6 +109,7 @@ print(json.dumps({'content': content}))
 RESPONSE=$(curl -s -X POST \
   "https://discord.com/api/v10/channels/$DISCORD_SHARE_CHANNEL_ID/messages" \
   -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+  -H "User-Agent: DiscordBot (https://[클럽URL], 1.0)" \
   -H "Content-Type: application/json" \
   -d "$MESSAGE_JSON")
 

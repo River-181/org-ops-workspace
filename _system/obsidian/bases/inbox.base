@@ -1,0 +1,59 @@
+filters:
+  and:
+    - file.inFolder("06_inbox")
+    - file.name != "README"
+    - '!file.name.contains("icon")'
+properties:
+  file.name:
+    displayName: 파일
+  kind:
+    displayName: 종류
+  status:
+    displayName: 상태
+  created:
+    displayName: 수집일
+  updated:
+    displayName: 수정
+views:
+  - type: table
+    name: 전체
+    order:
+      - file.name
+      - kind
+      - status
+      - created
+      - updated
+    sort:
+      - property: created
+        direction: DESC
+  - type: table
+    name: triage 상태별
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - file.name
+      - kind
+      - created
+      - updated
+  - type: table
+    name: 수집일 순
+    order:
+      - created
+      - file.name
+      - kind
+      - status
+      - updated
+    sort:
+      - property: created
+        direction: DESC
+  - type: table
+    name: 종류별
+    groupBy:
+      property: kind
+      direction: ASC
+    order:
+      - file.name
+      - status
+      - created
+      - updated

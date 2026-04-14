@@ -16,6 +16,7 @@ description: 리서치 전문팀 — 독립 탐구 또는 세션 피드, 병렬 
 2. `05_library/research/` 기존 연구 목록 확인 — 중복·연결 파악
 3. 리서치 목적 확인: **독립 탐구** vs **세션 피드**
 4. nlm 딥리서치 사용 예정이면: `_system/tools/nlm/260324-nlm-운영가이드.md` 읽기
+5. verifier 중심 조사면: `_system/tools/feynman/260327-feynman-운영가이드.md` 읽기
 
 ---
 
@@ -99,6 +100,17 @@ source _system/tools/.env   # 또는 direnv 자동 로드
 ```
 
 **결과 저장**: `05_library/research/<카테고리>/<주제명>/README.md` + 브리핑 + 마인드맵
+
+## feynman 보조 엔진
+
+`feynman`은 리서치팀의 메인 도구가 아니라, verifier가 중요한 조사에서 쓰는 **보조 하위 엔진**이다.
+
+- source-heavy 조사
+- 비교형 리서치
+- watch형 추적
+- 검증 가능한 citation이 중요한 주제
+
+기본값은 `nlm`이고, `feynman`은 필요 시 선택한다.
 
 ---
 

@@ -1,0 +1,87 @@
+filters:
+  and:
+    - file.inFolder("_system/tools")
+    - kind == "tool"
+properties:
+  image:
+    displayName: 이미지
+  icon:
+    displayName: 아이콘
+  file.name:
+    displayName: 도구
+  tool_id:
+    displayName: ID
+  tool_type:
+    displayName: 유형
+  owner:
+    displayName: 소유
+  auth_mode:
+    displayName: 인증
+  verified_on:
+    displayName: 검증일
+  status:
+    displayName: 상태
+  file.folder:
+    displayName: 폴더
+views:
+  - type: cards
+    name: 도구 갤러리
+    order:
+      - owner
+      - verified_on
+      - tool_type
+      - auth_mode
+    image: note.image
+    imageFit: contain
+    imageAspectRatio: 0.7
+    cardSize: 200
+  - type: table
+    name: 도구 카탈로그
+    order:
+      - icon
+      - file.name
+      - tool_type
+      - owner
+      - auth_mode
+      - status
+      - verified_on
+    sort:
+      - property: verified_on
+        direction: DESC
+      - property: tool_type
+        direction: ASC
+  - type: table
+    name: 소유별
+    groupBy:
+      property: owner
+      direction: ASC
+    order:
+      - icon
+      - file.name
+      - tool_type
+      - auth_mode
+      - verified_on
+      - status
+  - type: table
+    name: 인증별
+    groupBy:
+      property: auth_mode
+      direction: ASC
+    order:
+      - icon
+      - file.name
+      - owner
+      - verified_on
+      - status
+  - type: table
+    name: 상태별
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - icon
+      - file.name
+      - tool_type
+      - owner
+      - auth_mode
+      - verified_on

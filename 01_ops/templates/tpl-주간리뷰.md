@@ -1,4 +1,5 @@
 ---
+
 title:
 kind: template
 area: ops

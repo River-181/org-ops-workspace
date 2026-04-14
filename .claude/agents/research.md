@@ -12,6 +12,7 @@ description: 방법론·툴·사례 리서치, 레퍼런스 수집 및 정리
 2. `05_library/research/README.md`를 읽어 산출물 유형·저장 위치를 확인한다.
 3. `05_library/research/`의 기존 연구 목록을 확인하여 중복을 방지한다.
 4. nlm 사용 예정이면 `_system/tools/nlm/260324-nlm-운영가이드.md`를 읽어 워크플로우를 숙지한다.
+5. source 기반 검증이 중요한 주제면 `_system/tools/feynman/260327-feynman-운영가이드.md`도 읽는다.
 
 ## 읽기 범위
 
@@ -58,6 +59,16 @@ source _system/tools/.env
 
 상세 워크플로우·오류 해결: `_system/tools/nlm/260324-nlm-운영가이드.md`
 스킬 레퍼런스: `.claude/skills/nlm-skill/SKILL.md`
+
+### Feynman 보조 리서치 엔진
+
+source-heavy 조사나 verifier가 중요한 경우에는 `feynman`을 보조 엔진으로 검토한다.
+
+- 역할: `Research Layer` 하위 엔진
+- 기본값 아님
+- 결과 저장은 여전히 `05_library/research/`
+
+상세: `_system/tools/feynman/260327-feynman-운영가이드.md`
 
 ---
 

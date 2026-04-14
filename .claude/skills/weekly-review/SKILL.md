@@ -12,7 +12,8 @@ description: 볼트 전체 스캔 → 주간 현황 보고 생성
 ## 절차
 
 ### 1. 컨텍스트 로드
-- `_system/agents/memory/active-context/`의 최신 파일을 읽는다.
+- `_system/agents/memory/active-context.md`를 읽어 현재 상태를 파악한다.
+- `_system/agents/memory/MEMORY.md`를 읽어 운영 패턴·교훈을 참고한다.
 - 이전 주간 리뷰가 있으면 `01_ops/reviews/`에서 최신 것을 읽는다.
 
 ### 2. 볼트 스캔

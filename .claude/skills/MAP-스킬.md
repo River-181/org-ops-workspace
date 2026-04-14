@@ -5,7 +5,7 @@ status: live
 created: 2026-03-24
 ---
 
-# 스킬 맵
+# 스킬 맵 — [볼트명]
 
 > 모든 스킬의 인덱스. 스킬 추가 시 이 파일과 `CLAUDE.md`를 업데이트한다.
 > 각 스킬 정의: `.claude/skills/{스킬명}/SKILL.md`
@@ -41,7 +41,7 @@ created: 2026-03-24
 | reference-save | `/reference-save` | 조사 결과 저장 + `_system/reference/` 인덱스 갱신 |
 | reference-lookup | `/reference-lookup` | 저장된 레퍼런스 검색 및 반환 |
 | memory-update | `/memory-update` | 에이전트 메모리(active-context, change-log) 갱신 |
-| progress-update | `/progress-update` | 활성 프로젝트 PROGRESS.md 갱신 |
+| progress-update | `/progress-update` | PRJ-볼트v3 PROGRESS.md 갱신 |
 | inbox-triage | `/inbox-triage` | `06_inbox/` 파일 분류 및 라우팅 제안 |
 
 ### 콘텐츠 & 멤버
@@ -50,27 +50,37 @@ created: 2026-03-24
 |------|------|------|
 | slide-prep | `/slide-prep` | 슬라이드 MD → 외주 전달용 완성본 |
 | member-onboard | `/member-onboard` | 새 멤버 운영 DB 파일 생성 |
+| discord-announce | `/discord-announce` | Discord 공지 초안 작성 — 채널별 포맷 자동 적용 + `01_ops/posts/` 저장 |
+| drop-announce | `/drop-announce` | Drop 공지 자동화 — Excalidraw 카드 생성, 이미지 캡처, Drop 파일 생성, /drop-publish 자동 호출 |
+| drop-publish | `/drop-publish` | Drop 파일을 Discord #share + Notion Drops DB에 발행, drops.csv 갱신 |
+| release | `/release` | 기능 기반 릴리즈 — AI 초안 → 승인 → git push + GitHub release + Discord 공지 일괄 실행 |
 
-### 온보딩
+### 시스템 & 볼트 구조
 
 | 스킬 | 호출 | 설명 |
 |------|------|------|
-| org-init | `/org-init` | 새 조직 온보딩 — 6파일 identity 구조 초기화 |
+| framework-sync | `/framework-sync` | [볼트명] 범용 프레임워크 → org-ops-workspace 동기화 |
+
+### 외부 도구 연동
+
+| 스킬 | 호출 | 설명 |
+|------|------|------|
+| nlm-skill | `/nlm-skill` | NotebookLM CLI + MCP 전문 가이드 |
 
 ---
 
-## 스킬 추가 방법
+## 스킬 추가 방법 (반복 패턴)
 
 1. `.claude/skills/{스킬명}/` 폴더 생성
 2. `SKILL.md` 작성 — frontmatter: `name`, `description`, `allowed-tools`
 3. 위 테이블에 행 추가 (적절한 분류에)
 4. `CLAUDE.md` 스킬 섹션 테이블 업데이트
-5. 외부 도구 연동 스킬이라면 `_system/tools/README.md`도 업데이트
+5. 외부 도구 연동 스킬이라면 `_system/tools/MAP-도구.md`도 업데이트
 
 ---
 
 ## 참조
 
-- 에이전트 맵: `_system/obsidian/maps/MAP-에이전트.md`
-- 도구 맵: `_system/obsidian/maps/MAP-도구.md`
+- 에이전트 맵: `_system/agents/260311-[클럽명]-OS-에이전트아키텍처.md`
+- 도구 맵: `_system/tools/MAP-도구.md`
 - CLAUDE.md 스킬 섹션

@@ -9,7 +9,8 @@ description: 클럽 운영 조율 — 주간리뷰, 건강체크, 작업 목록 
 ## Boot 시퀀스
 
 1. `_system/agents/memory/active-context.md`를 읽어 현재 상태를 파악한다.
-2. `_system/rules.md`를 확인한다.
+2. `_system/agents/memory/MEMORY.md`를 읽어 검증된 운영 패턴·교훈을 파악한다.
+3. `_system/rules.md`를 확인한다.
 
 ## 읽기 범위
 

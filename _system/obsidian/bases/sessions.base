@@ -1,0 +1,88 @@
+filters:
+  and:
+    - file.inFolder("02_sessions")
+    - kind == "session"
+properties:
+  title:
+    displayName: 세션명
+  session_id:
+    displayName: 세션
+  session_status:
+    displayName: 진행상태
+  season:
+    displayName: 시즌
+  format:
+    displayName: 형식
+  plan:
+    displayName: 기획안
+  record:
+    displayName: 기록
+  status:
+    displayName: 문서상태
+  created:
+    displayName: 생성
+  updated:
+    displayName: 수정
+views:
+  - type: table
+    name: 세션 카탈로그
+    order:
+      - session_id
+      - title
+      - session_status
+      - season
+      - format
+      - plan
+      - record
+      - status
+      - updated
+    sort:
+      - property: session_id
+        direction: ASC
+  - type: table
+    name: 상태별
+    groupBy:
+      property: session_status
+      direction: ASC
+    order:
+      - session_id
+      - title
+      - format
+      - season
+      - status
+      - updated
+  - type: table
+    name: 시즌별
+    groupBy:
+      property: season
+      direction: ASC
+    order:
+      - session_id
+      - title
+      - session_status
+      - format
+      - updated
+  - type: table
+    name: 형식별
+    groupBy:
+      property: format
+      direction: ASC
+    order:
+      - session_id
+      - title
+      - session_status
+      - season
+      - updated
+    sort:
+      - property: session_id
+        direction: DESC
+  - type: table
+    name: 운영 분류
+    groupBy:
+      property: format
+      direction: ASC
+    order:
+      - session_id
+      - title
+      - session_status
+      - updated

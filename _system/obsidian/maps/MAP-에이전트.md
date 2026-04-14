@@ -3,7 +3,8 @@ title: MAP-에이전트
 kind: map
 area: system
 status: live
-created: 2026-03-24
+created: 2026-03-19
+updated: 2026-03-28
 up: "[[MOC-시스템]]"
 tags:
   - type/map
@@ -12,63 +13,65 @@ tags:
 
 # MAP-에이전트
 
-> 에이전트 시스템 전체의 중간 허브.
-> 팀 오케스트레이터 → 개별 에이전트 → 프로토콜 → 메모리 순으로 탐색한다.
+> [볼트명] 에이전트 시스템의 동적 인덱스.
+> 설명은 상단에, 전체 문서 분포는 Base에, 긴 연결 문서는 접힌 섹션에 둔다.
 
----
+## 핵심
 
-## 에이전트 팀 (오케스트레이터)
+- [[260311-[클럽명]-OS-에이전트아키텍처|에이전트 아키텍처 전체 설계]]
+- [[_system/agents/teams/README|팀 운영 가이드]]
+- [[active-context]]
+- [[change-log]]
+- [[MEMORY|장기기억 (MEMORY.md)]]
+- [[260313-폴더-라우팅-인덱스]]
+- [[260313-파일명-코드-참조규칙]]
 
-복합 목적 파이프라인. 팀을 호출하면 서브에이전트를 디스패치한다.
+## 뷰
 
-| 팀 | 파이프라인 |
-|----|-----------|
-| `@session-team` | 리서치 → 내용 구성 → 자료 제작 → 배포 |
-| `@research-team` | 병렬 다주제 리서치 → 통합 (독립 or 세션 피드) |
-| `@studio-team` | 슬라이드 완성 → 공지 → 발행 |
+![[agents.base#kind별]]
 
----
+![[agents.base#상태별]]
 
-## 개별 에이전트
+## 가이드
 
-### 조직 운영
+- 현재 동작 기준 문서는 `active-context`, 구조 기준 문서는 아키텍처와 프로토콜 문서다.
+- 폴더별 분포나 누락을 볼 때만 Base로 내려가고, 실제 실행 규칙은 프로토콜 문서를 읽는다.
+- 레거시 프로필과 로그는 그래프 보존용으로 아래에 접어 둔다.
 
-| 에이전트 | 역할 |
-|---------|------|
-| `@ops` | 주간리뷰, 건강체크, 작업 조율 |
-| `@prep` | 세션 기획안, 자료, 체크리스트 |
-| `@record` | 세션 기록, 결정 로그, 회고 |
-| `@research` | 방법론 연구, 도구 분석, 사례 조사 |
-| `@publish` | 콘텐츠 제작, 공지, 플랫폼 발행 |
+## 상세
 
-### 볼트 구조
+> [!abstract]- 그래프 링크
+> ### 프로토콜
+> - [[260313-에이전트-워크스페이스-운영-프로토콜]]
+> - [[260316-에이전트간-위임-프로토콜]]
+> - [[260316-다인운영-협업규칙]]
+> - [[260316-워크스페이스OS-업그레이드-프로토콜]]
+> - [[260321-세션준비-워크플로우]]
+>
+> ### 인덱스와 메모리
+> - [[260313-폴더-라우팅-인덱스]]
+> - [[260313-파일명-코드-참조규칙]]
+> - [[active-context]]
+> - [[change-log]]
+> - [[MEMORY|장기기억 (MEMORY.md)]]
+> - [[260313-폴더체계-개편-결정]]
+> - [[260316-워크스페이스OS-v2.1-도입]]
+>
+> ### 레거시 프로필
+> - [[_system/agents/profiles/[클럽명]-ops|[클럽명]-ops]]
+> - [[_system/agents/profiles/[클럽명]-thinker|[클럽명]-thinker]]
+> - [[_system/agents/profiles/nugi-chronicle|nugi-chronicle]]
+> - [[_system/agents/profiles/nugi-craft|nugi-craft]]
+> - [[_system/agents/profiles/nugi-garden|nugi-garden]]
+> - [[_system/agents/profiles/nugi-librarian|nugi-librarian]]
+> - [[_system/agents/profiles/nugi-meta|nugi-meta]]
+>
+> ### 로그
+> - [[260313-백업-병합-리포트]]
+> - [[260313-루트-에이전트문서-통합로그]]
+> - [[260313-README-및-에이전트규칙-반영로그]]
 
-| 에이전트 | 역할 |
-|---------|------|
-| `@architect` | 볼트 구조 총괄, Phase 판단 |
-| `@graph-weaver` | 위키링크·up 연결, 고아 해소 |
-| `@frontmatter-doctor` | frontmatter 진단·수정, 태그 정규화 |
-
----
-
-## 프로토콜
-
-- [[_system/agents/protocols/|에이전트 운영 프로토콜]]
-
----
-
-## 메모리
-
-- [[_system/agents/memory/active-context|현재 컨텍스트]]
-- [[_system/agents/memory/change-log|변경 이력]]
-
----
-
-## 자동 목록 (Dataview)
-
-```dataview
-TABLE title, status, kind
-FROM "_system/agents"
-WHERE file.name != "MAP-에이전트" AND file.name != "README"
-SORT kind ASC, file.name ASC
-```
+> [!info]- 팀 구조
+> - `@session-team`: 리서치 -> 내용 구성 -> 자료 제작 -> 배포
+> - `@research-team`: 병렬 다주제 리서치 -> 통합
+> - `@studio-team`: 슬라이드 -> 공지 -> 발행

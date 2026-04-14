@@ -1,10 +1,12 @@
 ---
 title: 결정로그
 kind: template
-area: ops
-status: draft
+area: OPS
+status: final
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
+tags:
+  - [클럽명]
 related: []
 up: "[[MOC-운영]]"
 ---

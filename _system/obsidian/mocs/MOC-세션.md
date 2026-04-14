@@ -2,6 +2,7 @@
 title: MOC 세션
 status: live
 created: 2026-03-15
+updated: 2026-03-27
 tags:
   - type/moc
   - session/moc
@@ -12,26 +13,29 @@ up: "[[MOC-홈]]"
 
 # MOC 세션
 
-> 세션 폴더 네이밍은 `_system/identity/workflow.md`의 `subfolder_pattern`을 따른다.
+> `sessions.base`는 세션 허브 파일 한 개를 한 행으로 읽는다.
+> `plan`, `record`, `materials`는 각 세션 허브 안으로 들어가서 찾는다.
 
-## 활성 세션
+## 현재 시즌
 
-> 이 섹션은 세션이 생성될 때 `@prep` 에이전트 또는 `session-setup` 스킬이 채운다.
-
-| 세션  | 제목 | Plan | Record | 상태 |
-| --- | --- | --- | --- | --- |
-| (예시) | (세션 제목) | (plan 링크) | (record 링크) | draft |
+- [[S00-OT]]
+- [[S01-내우주의시작]]
+- [[S02-노션으로시작하는세컨드브레인]]
+- [[S03-PKM방법론딥다이브]]
 
 ## Backlog
 
-- [[02_sessions/backlog/README|세션 아이디어 목록]]
+- [[260311-세션0-내우주의시작]]
 
-## Ad-hoc
+## Adhoc
 
-- `02_sessions/adhoc/` — 비정기 세션
+- [[260405-옵시디언설치파티]]
 
-## 읽는 관점
+## 가이드
 
-- **시즌 흐름**: 이 MOC
-- **세션 카탈로그**: Base (`_system/obsidian/bases/sessions.base`)
-- **최근 수정/누락**: [[_system/obsidian/dashboards/260315-운영-대시보드|운영 대시보드]]
+- [[세션-운영-가이드]]
+
+## 카탈로그
+
+- [[sessions.base]]
+- [[운영-대시보드]]

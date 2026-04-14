@@ -82,7 +82,7 @@ Gemini / Ideogram 프롬프트 작성 → 생성 가이드 제공
 - 디자인 가이드: `04_studio/brand/260312-디자인가이드.md`
 - 슬라이드 규격: 1920×1080
 - 색상·타이포: 가이드 우선, 이탈 금지
-- 캐릭터 SSOT: `04_studio/brand/character/20260316_nugiclub_lego_character_design_ssot.md`
+- 캐릭터 SSOT: `04_studio/brand/character/20260316_[클럽명]_character_design_ssot.md`
 
 ---
 

@@ -1,11 +1,12 @@
 ---
+
 title:
 kind: template
 area: ops
 status: draft
 created:
 tags:
-  - research/notes
+  - research/
 up: "[[MOC-운영]]"
 ---
 
@@ -19,7 +20,7 @@ up: "[[MOC-운영]]"
 
 ## So What?
 
-이 조직/팀에 어떻게 적용할 수 있는가:
+[클럽명]에 어떻게 적용할 수 있는가:
 
 ## 출처
 

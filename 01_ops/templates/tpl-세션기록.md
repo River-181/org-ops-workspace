@@ -1,15 +1,16 @@
 ---
-title: "{세션 식별자} 세션 기록 — {제목}"
+title: "S{NN} 세션 기록 — {제목}"
 kind: session-record
 area: sessions
 status: live
-created: YYYY-MM-DD
-session_id: ""
+created: {{date:YYYY-MM-DD}}
+session_id: "S{NN}"
 up: "[[MOC-세션]]"
-plan: "[[{슬러그}-plan]]"
+plan: "[[S{NN}-plan]]"
 participants: []
 materials: []
 tags:
+  - session/S{NN}
   - session/record
 ---
 
@@ -19,7 +20,7 @@ tags:
 
 | 항목 | 내용 |
 |------|------|
-| 세션 식별자 |  |
+| 세션 번호 | S{NN} |
 | 일시 | YYYY-MM-DD HH:MM–HH:MM |
 | 장소 | |
 | 진행자 | |
@@ -68,7 +69,7 @@ tags:
 
 ## 피드백
 
-> 세션 종료 후 수집한 참가자 반응·평가를 기록한다.
+> 세션 종료 후 수집한 멤버 반응·평가를 기록한다.
 > 익명 의견은 출처 없이 내용만 기록.
 
 ### 잘된 점

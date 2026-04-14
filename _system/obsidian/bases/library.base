@@ -1,0 +1,129 @@
+filters:
+  and:
+    - file.inFolder("05_library")
+    - '!file.inFolder("05_library/seasons")'
+    - file.name != "README"
+    - or:
+        - kind == "article"
+        - kind == "reference"
+        - kind == "registry"
+        - kind == "map"
+        - and:
+            - kind == "index"
+            - or:
+                - up == link("MOC-라이브러리")
+                - up == link("MAP-라이브러리")
+        - and:
+            - kind == "research"
+            - or:
+                - up == link("MOC-라이브러리")
+                - up == link("MAP-라이브러리")
+properties:
+  file.name:
+    displayName: 문서
+  kind:
+    displayName: kind
+  up:
+    displayName: 부모
+  status:
+    displayName: 상태
+  reviewed_on:
+    displayName: 검토일
+  published_at:
+    displayName: 발행일
+  source_type:
+    displayName: 출처 유형
+  visibility:
+    displayName: 공개 범위
+  updated:
+    displayName: 수정
+  file.folder:
+    displayName: 폴더
+views:
+  - type: table
+    name: 라이브러리 디렉토리
+    order:
+      - file.name
+      - kind
+      - up
+      - status
+      - reviewed_on
+      - published_at
+      - updated
+      - file.folder
+    sort:
+      - property: file.name
+        direction: ASC
+  - type: table
+    name: 허브
+    filters:
+      and:
+        - kind != "article"
+        - kind != "reference"
+    order:
+      - file.name
+      - kind
+      - up
+      - status
+      - updated
+      - file.folder
+    sort:
+      - property: kind
+        direction: ASC
+      - property: file.name
+        direction: ASC
+  - type: table
+    name: 발행물
+    filters:
+      or:
+        - kind == "article"
+        - kind == "reference"
+    groupBy:
+      property: kind
+      direction: ASC
+    order:
+      - file.name
+      - source_type
+      - visibility
+      - reviewed_on
+      - published_at
+      - status
+      - updated
+  - type: table
+    name: 부모별
+    groupBy:
+      property: up
+      direction: ASC
+    order:
+      - file.name
+      - kind
+      - status
+      - reviewed_on
+      - published_at
+      - updated
+      - file.folder
+  - type: table
+    name: 상태별
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - file.name
+      - kind
+      - up
+      - reviewed_on
+      - published_at
+      - updated
+  - type: table
+    name: 최근 업데이트
+    order:
+      - file.name
+      - kind
+      - up
+      - status
+      - reviewed_on
+      - published_at
+      - updated
+    sort:
+      - property: updated
+        direction: DESC

@@ -4,6 +4,7 @@ kind: map
 area: system
 status: live
 created: 2026-03-24
+updated: 2026-03-28
 up: "[[MOC-시스템]]"
 tags:
   - system/tools
@@ -12,56 +13,45 @@ tags:
 
 # MAP-도구
 
-> 이 조직이 사용하는 외부 CLI/MCP 도구의 Obsidian 허브.
-> 에이전트용 레지스트리: [[_system/tools/README|_system/tools/README]]
+> 이 볼트에서 사용하는 외부 CLI·MCP 도구의 동적 진입점.
+> 설명은 이 문서가 맡고, 실제 목록은 Base가 맡는다.
 
----
+## 핵심
 
-## 도구 목록
+- [[_system/tools/README|_system/tools/README]]
+- [[nlm]]
+- [[feynman]]
+- [[figma]]
+- [[Kanban]]
+- [[GitHub]]
+- [[MAP-스킬]]
 
-| 도구 | 인덱스 | 분류 | Claude Code 스킬 |
-|------|--------|------|-----------------|
-| (도구 추가 시 여기에) | — | — | — |
+## 뷰
 
----
+![[tools.base#도구 갤러리]]
 
-## 도구 추가 패턴
+![[tools.base#도구 카탈로그]]
 
-새 도구가 생길 때 아래 순서를 따른다.
+![[tools.base#소유별]]
 
-### 1. 폴더 및 파일 생성
+## 가이드
 
-```
-_system/tools/{도구명}/
-├── {도구명}.md              ← 이 파일 (인덱스, Obsidian 허브)
-├── YYMMDD-{도구명}-운영가이드.md   ← 에이전트용 상세 가이드
-└── {인증·데이터 폴더}/       ← .gitignore 제외
-```
+- 새 도구를 볼 때는 `도구 갤러리`에서 성격을 먼저 파악하고, 세부 필드는 `도구 카탈로그`에서 확인한다.
+- 문서 수정이나 인증 점검 범위가 보이면 `소유별`이나 `인증별` 관점으로 다시 좁힌다.
+- 이 문서에는 설명과 핵심 진입점만 두고, 증가하는 목록은 `tools.base`에서 처리한다.
 
-### 2. 레지스트리 업데이트
+## 상세
 
-- 위 도구 목록 표에 행 추가
-- `_system/tools/README.md` 도구 목록 업데이트
-- `_system/tools/.env`에 경로 환경변수 추가
-- `_system/tools/.gitignore`에 인증 데이터 경로 추가
+> [!abstract]- 그래프 링크
+> - [[_system/tools/README|_system/tools/README]]
+> - [[nlm]]
+> - [[feynman]]
+> - [[figma]]
+> - [[Kanban]]
+> - [[GitHub]]
+> - [[MAP-스킬]]
 
-### 3. 스킬 생성
-
-```
-.claude/skills/{도구명}/
-└── SKILL.md    ← frontmatter: name, description, allowed-tools
-```
-
-- `.claude/skills/MAP-스킬.md` 스킬 목록 업데이트
-- `CLAUDE.md` 스킬 섹션 업데이트
-
----
-
-## 자동 목록 (Dataview)
-
-```dataview
-TABLE title, status
-FROM "_system/tools"
-WHERE file.name != "MAP-도구" AND file.name != "README" AND file.extension = "md"
-SORT file.name ASC
-```
+> [!info]- 도구 추가 패턴
+> 1. `_system/tools/{도구명}/` 아래에 허브 노트와 운영 가이드를 만든다.
+> 2. `_system/tools/README.md`, `tools.base`, 환경변수 문서를 같이 갱신한다.
+> 3. 반복 워크플로우가 생기면 대응 스킬과 `MAP-스킬`도 함께 갱신한다.
