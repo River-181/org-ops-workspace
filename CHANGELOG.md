@@ -13,6 +13,44 @@ created: 2026-03-24
 
 ---
 
+## 2026-04-17 — v1.6.0: session-ops 통합 스킬 + 온보딩 가이드 3종 + RUNBOOK
+
+### 변경 내용
+
+**session-ops 통합 스킬 (.claude/skills/session-ops/)**
+- `setup` / `launch` / `record` / `guard` 4개 서브커맨드를 단일 스킬로 통합
+- 기존 session-setup / session-launch / session-record / session-guard는 deprecated (2026-07-16 삭제 예정)
+- guard 서브커맨드: 에이전트 대화 세션 격리 + AAR 3줄 패턴
+
+**온보딩 가이드 3종 신규 (01_ops/guides/)**
+- `온보딩-Lv1-Day1.md` — 전체 생태계 지도, 폴더 구조, Source of Truth 개념
+- `온보딩-Lv2-Week1.md` — 주간 루틴 흐름도, 각 스킬의 존재 이유, FAQ
+- `온보딩-Lv3-Month1.md` — 세션 수명주기 완주, 패턴 승격 판단 기준
+
+**RUNBOOK-볼트유지.md 신규 (01_ops/guides/)**
+- 주 1회 30분 체크리스트 (주간 루틴 + 세션 준비)
+- 월 1회 건강성 진단 절차
+- 세션 실행 주기 표 (session-ops 서브커맨드 기준)
+- 장애 대응, 인수인계 규칙
+
+**메모리 스킬 분업 경계 정제**
+- `memory-update`: routine 세션 기록 전용
+- `update-governance`: 라우팅 판단 필요 시 (특수)
+- `week-promote`: L1/L2 → L3 장기기억 승격
+
+**NUGI 잔존 표현 제거**
+- SETUP-GUIDE.md 예시값, MAP-에이전트.md 레거시 프로필, MAP-드롭.md, MOC-스튜디오.md, 칸반 파일 6건
+
+### 마이그레이션 노트
+
+- `/session-ops setup` → 기존 `/session-setup` 대체
+- `/session-ops launch` → 기존 `/session-launch` 대체
+- `/session-ops record` → 기존 `/session-record` 대체
+- `/session-ops guard` → 기존 `/session-guard` 대체
+- RUNBOOK 섹션 2의 체크리스트가 주간 루틴 표준 참조점
+
+---
+
 ## 2026-04-16 — v1.5.0: 진단 감사 저장 규약 + Drop 발행 표준 + 훅 정책
 
 ### 변경 내용
