@@ -51,10 +51,7 @@ tags:
 
 | 스킬 | 호출 | 설명 | 상태 | 출처 |
 |------|------|------|------|------|
-| session-setup | `/session-setup` | 세션 폴더 + 기획안 + 체크리스트 자동 생성 | active | local |
-| session-launch | `/session-launch` | D-N일 기준 준비 상태 점검 + 당일 체크리스트 | active | local |
-| session-record | `/session-record` | 세션 종료 후 record 완성 | active | local |
-| session-guard | `/session-guard` | 세션 시작·종료 프로토콜 — ID 선언, 목표 설정, AAR + 메모리 갱신 | active | local |
+| session-ops | `/session-ops [서브커맨드]` | 세션 수명주기 통합 진입점 — `setup`(폴더 생성) / `launch`(D-N 준비 점검) / `record`(기록 완성) / `guard`(에이전트 대화 세션 관리) | active | local |
 | weekly-review | `/weekly-review` | 볼트 전체 스캔 → 주간 현황 보고 | active | local |
 
 ### 볼트 건강

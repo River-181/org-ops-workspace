@@ -34,7 +34,6 @@ up: "[[MOC-홈]]"
 
 ## 캐릭터
 
-- [[20260316_nugiclub_lego_character_design_ssot]]
 
 ## 발행
 

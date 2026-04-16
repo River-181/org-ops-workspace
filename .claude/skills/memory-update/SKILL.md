@@ -1,6 +1,6 @@
 ---
 name: memory-update
-description: 에이전트 메모리(active-context, change-log, decisions) 갱신. 세션 작업 결과를 메모리에 반영하는 일반 절차. "메모리 갱신", "컨텍스트 업데이트", "오늘 작업 기록해줘" 등의 요청 시 사용. 세션 종료 후 자동 적용.
+description: 세션 작업 결과를 메모리에 반영하는 일반 절차 (routine). active-context 덮어쓰기 + change-log append + decisions 생성(대안 비교 시). CLAUDE.md나 클럽타임라인 업데이트가 필요할 때는 update-governance를 사용한다. "메모리 갱신", "컨텍스트 업데이트", "오늘 작업 기록해줘" 등의 요청 시 사용. 세션 종료 후 자동 적용.
 ---
 
 # 메모리 갱신

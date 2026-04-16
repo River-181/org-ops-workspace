@@ -1,6 +1,6 @@
 ---
 name: week-promote
-description: 주간 리뷰 결과와 단기·중기 메모리에서 핵심 항목을 장기기억으로 승격합니다. "주간 승격", "장기기억 정리", "이번 주 패턴 기록해줘", "시즌 마무리" 등의 요청 시 사용. weekly-review 완료 직후 또는 시즌 전환 시 실행.
+description: 주간 리뷰 직후 또는 시즌 마감 시 단기/중기 관찰을 장기기억으로 승격. weekly-review 완료 직후 실행 권장. 매 세션 후 routine 실행 불필요. "주간 승격", "장기기억 정리", "이번 주 패턴 기록해줘", "시즌 마무리" 등의 요청 시 사용.
 ---
 
 # Week Promote — 장기기억 승격
@@ -46,13 +46,8 @@ L3 장기  long-term/
 ### Step 1: 소스 파일 로드
 
 ```bash
-# 최근 주간 리뷰 파일 탐색
 ls -t 01_ops/reviews/*.md 2>/dev/null | head -3
-
-# decisions/ 미승격 파일 확인
 ls _system/agents/memory/decisions/
-
-# long-term/ 현재 상태 확인 (중복 방지)
 head -50 _system/agents/memory/long-term/knowledge.md
 ```
 
@@ -62,7 +57,7 @@ head -50 _system/agents/memory/long-term/knowledge.md
 
 - **운영 패턴**: "효과적", "잘 됐다", "다음에도", "2회", "반복"
 - **교훈**: "실패", "안 됐다", "다음에는", "예상 밖"
-- **멤버 관찰**: 멤버 반응·참여도 관련 메모 (세션 기록 참조)
+- **멤버 관찰**: 멤버 반응·참여도 관련 메모
 - **결정 근거**: `decisions/`의 도구·플랫폼 관련 파일
 
 ### Step 3: 후보 제시 및 확인
@@ -101,7 +96,7 @@ long-term/club-profile.md:
 - YYYY-MM-DD | [관찰/선호 내용] (N회 확인, 근거: [세션/날짜])
 ```
 
-### Step 6: 시즌 마감 — seasons/ 요약 생성
+### Step 5: 시즌 마감 — seasons/ 요약 생성
 
 "시즌 마무리" 요청 또는 시즌 전환 시:
 
@@ -109,12 +104,12 @@ long-term/club-profile.md:
 
 ```markdown
 ---
-title: 시즌1 회고
+title: 시즌N 회고
 kind: log
 area: system
 status: live
 created: YYYY-MM-DD
-season: 2026-S1
+season: YYYY-SN
 ---
 
 ## 시즌 개요
@@ -132,7 +127,7 @@ season: 2026-S1
 - club-profile.md: [업데이트 항목]
 ```
 
-### Step 7: change-log.md append
+### Step 6: change-log.md append
 
 ```markdown
 ## YYYY-MM-DD — 장기기억 승격

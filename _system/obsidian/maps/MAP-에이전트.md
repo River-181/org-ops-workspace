@@ -60,11 +60,6 @@ tags:
 > ### 레거시 프로필
 > - [[_system/agents/profiles/[클럽명]-ops|[클럽명]-ops]]
 > - [[_system/agents/profiles/[클럽명]-thinker|[클럽명]-thinker]]
-> - [[_system/agents/profiles/nugi-chronicle|nugi-chronicle]]
-> - [[_system/agents/profiles/nugi-craft|nugi-craft]]
-> - [[_system/agents/profiles/nugi-garden|nugi-garden]]
-> - [[_system/agents/profiles/nugi-librarian|nugi-librarian]]
-> - [[_system/agents/profiles/nugi-meta|nugi-meta]]
 >
 > ### 로그
 > - [[260313-백업-병합-리포트]]
