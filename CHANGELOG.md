@@ -13,6 +13,35 @@ created: 2026-03-24
 
 ---
 
+## 2026-04-16 — v1.5.0: 진단 감사 저장 규약 + Drop 발행 표준 + 훅 정책
+
+### 변경 내용
+
+**진단 감사 저장 규약 (_system/obsidian/audits/)**
+- `_system/obsidian/audits/README.md` 신규: 파일 네이밍·frontmatter·섹션 순서·실행 주기 표준화
+- 6개 진단 스킬 출력 경로 `01_ops/reviews/` → `_system/obsidian/audits/`로 통일
+  - `vault-health`, `verify-implementation`, `frontmatter-scan`, `link-audit`, `manifest-check`, `tag-audit`
+- frontmatter 표준: `kind: audit`, `source_skill:`, `up: "[[MOC-시스템]]"` 필드 추가
+
+**Drop 발행 표준 (drop-announce/SKILL.md)**
+- Drop 파일 속성 목록 갱신: `tags`, `source`, `link`, `memo`, `created`, `published_at`, `up`, `discord_message_id`, `notion_page_id` 추가; 비표준 필드 추가 금지 명시
+- `공유 내용 섹션 형식` 신규: 500자 내외, Discord 형식, `[ Drop | #NNNN ]` footer 규격
+
+**운영 표준 정비**
+- `_system/rules.md`: `## 6. 자동화 훅 정책` 섹션 추가 (settings.json 관리 + 신규 훅 등록 절차)
+- `tpl-결정로그.md`: `status: live`, `tags: ops/decision` 표준화
+- `MAP-에이전트.md`: 슬림화 원칙 가이드 추가 (active-context 핵심 상태만 유지)
+- `MAP-드롭.md`: drop-0019~0021 그래프 링크 추가
+
+### 마이그레이션 노트
+
+기존 조직에서 진단 스킬을 이미 사용하고 있다면:
+- `01_ops/reviews/` 아래 기존 진단 보고서를 `_system/obsidian/audits/`로 이동
+- frontmatter에 `kind: audit`, `source_skill:`, `up: "[[MOC-시스템]]"` 추가
+- `_system/obsidian/audits/README.md`의 섹션 순서 규약(6개 섹션 고정)에 맞게 정리
+
+---
+
 ## 2026-04-14 — v1.4.0: 장기기억 시스템 + 신규 스킬 7종 + Obsidian 인프라 확장
 
 ### 변경 내용
