@@ -177,3 +177,13 @@ related:
 | **Figma** | 디자인 | 브랜딩 자산 |
 
 **원칙**: 로컬에서 작성 → Notion/Discord에 요약 게시 → 멤버가 소비
+
+---
+
+## 6. 자동화 훅 정책
+
+- `.claude/settings.json`은 볼트 전역 훅 정의. 개인 설정은 `.claude/settings.local.json` (gitignore).
+- 신규 훅 추가 시:
+  1. `_system/agents/memory/decisions/`에 근거 기록
+  2. `.claude/settings.json` 업데이트
+  3. 이 섹션에 한 줄 요약 append

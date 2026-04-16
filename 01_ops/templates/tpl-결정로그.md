@@ -2,11 +2,11 @@
 title: 결정로그
 kind: template
 area: OPS
-status: final
+status: live
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 tags:
-  - [클럽명]
+  - ops/decision
 related: []
 up: "[[MOC-운영]]"
 ---

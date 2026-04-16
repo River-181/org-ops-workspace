@@ -56,6 +56,18 @@ allowed-tools: Read, Glob, Grep, Bash
 |------|----------|------|----------|
 ```
 
+## 결과 저장
+
+`_system/obsidian/audits/YYMMDD-manifest-check.md` 파일로 저장한다.
+frontmatter·섹션 구조는 [[_system/obsidian/audits/README|진단 감사 저장 규약]]을 따른다.
+
+필수 필드:
+- `source_skill: manifest-check`
+- `kind: audit`
+- `area: system`
+
+본문 구조: 요약 → CRITICAL → WARNING → INFO → 이행 항목
+
 ## 주의사항
 
 - 이 스킬은 보고만 한다. `.obsidian/` 파일을 직접 수정하지 않는다.

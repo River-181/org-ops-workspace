@@ -92,6 +92,18 @@ related: 추가 권고
 ...
 ```
 
+## 결과 저장
+
+`_system/obsidian/audits/YYMMDD-link-audit.md` 파일로 저장한다.
+frontmatter·섹션 구조는 [[_system/obsidian/audits/README|진단 감사 저장 규약]]을 따른다.
+
+필수 필드:
+- `source_skill: link-audit`
+- `kind: audit`
+- `area: system`
+
+본문 구조: 요약 → CRITICAL → WARNING → INFO → 이행 항목
+
 ## 주의사항
 
 - 이 스킬은 **진단만** 한다. 파일 수정은 `@graph-weaver` 에이전트가 수행한다.

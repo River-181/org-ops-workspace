@@ -81,15 +81,23 @@ description: 네이밍·메타데이터·링크·깊이 위생 점검
 - **사용 안 된 태그**: 레지스트리에는 있지만 볼트에서 0번 사용 → INFO
 - `05_library/seasons/2025-pre/` 아카이브의 태그는 검사 제외.
 
-### 11. 보고서 생성
-- 출력: `01_ops/reviews/YYMMDD-볼트점검.md`
+### 11. 결과 저장
+
+`_system/obsidian/audits/YYMMDD-vault-health.md` 파일로 저장한다.
+frontmatter·섹션 구조는 [[_system/obsidian/audits/README|진단 감사 저장 규약]]을 따른다.
+
+필수 필드:
+- `source_skill: vault-health`
+- `kind: audit`
+- `area: system`
+
+본문 구조: 요약 → CRITICAL → WARNING → INFO → 이행 항목
+
 - 카테고리별 위반 수 + 구체적 파일 목록
 - 심각도: CRITICAL / WARNING / INFO
-- 섹션 순서:
-  1. 요약 (심각도별 총 건수)
-  2. CRITICAL 항목 (파일명 규칙, frontmatter 필수 필드, `up:` 누락)
-  3. WARNING 항목 (고아 파일, 깨진 위키링크, 미등록 태그)
-  4. INFO 항목 (빈 파일, 사용 안 된 태그, 기타)
+- CRITICAL: 파일명 규칙, frontmatter 필수 필드, `up:` 누락
+- WARNING: 고아 파일, 깨진 위키링크, 미등록 태그
+- INFO: 빈 파일, 사용 안 된 태그, 기타
 
 ## 주의사항
 

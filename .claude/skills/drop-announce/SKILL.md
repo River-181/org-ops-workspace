@@ -347,16 +347,64 @@ NOTION_DROPS_DB_ID="your_db_id"
 
 ## Drop 파일 속성 참조
 
-기존 drop-0016 형식 따름:
-- `title`: "Drop #NNNN — [제목]" (반드시 "#" 포함)
+기존 drop 형식 따름 (필드 순서 엄격히 지킬 것):
+- `title`: "Drop #NNNN — [제목]" (반드시 "#" 포함, 큰따옴표 필수)
 - `kind`: "drop" (고정)
 - `area`: "studio" (고정)
-- `status`: "draft" (생성 시) → "live" (발행 후)
+- `status`: "draft" (생성 시) → "live" (발행 후) ← 단일 값, 리스트 아님
 - `drop_status`: "ready" (생성 시) → "live" (발행 후)
-- `drop_number`: "NNNN" (4자리 zero-pad 문자열)
-- `type`: "Tools", "News", "Research" 등
+- `drop_number`: "NNNN" (4자리 zero-pad 문자열, 큰따옴표 필수)
+- `type`: "Tip", "Tools", "News", "Research" 등
+- `tags`: YAML 배열 형식만 허용 (`- type/drop`, `- category/tips`) — 인라인 해시태그 금지
+- `source`: "내부" (자체 제작) | "외부" (외부 링크) | "Discord" (Discord 공유)
+- `link`: 외부 URL (선택)
+- `memo`: 한 줄 설명
 - `visibility`: "Member" (기본) 또는 "Internal"
-- `author`: "김주용" (또는 다른 운영자)
+- `created`: YYYY-MM-DD
+- `published_at`: YYYY-MM-DD (발행 전 빈 값)
+- `up`: "[[MAP-드롭]]" (고정, 큰따옴표 필수)
+- `discord_message_id`: 발행 후 기록
+- `notion_page_id`: 발행 후 기록
+
+**비표준 필드 추가 금지**: `author`, `series`, `updated`, `drop_type` 등 위 목록에 없는 필드는 넣지 말 것.
+
+---
+
+## 공유 내용 섹션 형식
+
+**Drop 파일의 `## 공유 내용`은 Discord에 그대로 올라가는 짧은 메시지다.**
+
+핵심 원칙:
+- **500자 내외** — 긴 연구 문서, 체크리스트, FAQ 섹션 절대 금지
+- 이모지로 시선 잡기 → 핵심 인사이트 한 줄 → 간결한 설명 → 행동 유도
+- 이미지는 `![[파일명.png|700]]` 형식으로 삽입
+- 마지막 줄: `[ Drop | #NNNN ]`
+
+**올바른 구조:**
+```markdown
+## 공유 내용
+
+📝 **[한 줄 훅]**
+
+[핵심 인사이트 2~3문장]
+
+**[구조화된 핵심 정보]**
+
+① ...
+② ...
+
+![[이미지.png|700]]
+
+---
+
+## 링크
+
+- [출처]: [URL]
+
+[ Drop | #NNNN ]
+```
+
+기획·초안 내용이 길다면 별도 파일(`04_studio/drops/기획/`)에 보관하고 drop 파일에서 링크만 참조한다.
 
 ---
 

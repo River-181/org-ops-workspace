@@ -84,3 +84,15 @@ argument-hint: "[선택사항: 특정 스킬 이름]"
 - 이 스킬 자체는 실행 대상에 포함하지 않는다
 - `05_library/seasons/` 아카이브는 스캔에서 제외
 - 각 검증 스킬의 자체 예외사항을 준수한다
+
+## 결과 저장
+
+`_system/obsidian/audits/YYMMDD-verify-implementation.md` 파일로 저장한다.
+frontmatter·섹션 구조는 [[_system/obsidian/audits/README|진단 감사 저장 규약]]을 따른다.
+
+필수 필드:
+- `source_skill: verify-implementation`
+- `kind: audit`
+- `area: system`
+
+본문 구조: 요약 → CRITICAL → WARNING → INFO → 이행 항목

@@ -82,6 +82,18 @@ platform/, role/, season/, type/, system/
 |------|-------------|----------|
 ```
 
+## 결과 저장
+
+`_system/obsidian/audits/YYMMDD-tag-audit.md` 파일로 저장한다.
+frontmatter·섹션 구조는 [[_system/obsidian/audits/README|진단 감사 저장 규약]]을 따른다.
+
+필수 필드:
+- `source_skill: tag-audit`
+- `kind: audit`
+- `area: system`
+
+본문 구조: 요약 → CRITICAL → WARNING → INFO → 이행 항목
+
 ## 주의사항
 
 - `05_library/seasons/2025-pre/` 아카이브는 스캔에서 제외한다.

@@ -56,7 +56,19 @@ allowed-tools: Read, Glob, Grep
 |------|----------|
 ```
 
+## 결과 저장
+
+`_system/obsidian/audits/YYMMDD-frontmatter-scan.md` 파일로 저장한다.
+frontmatter·섹션 구조는 [[_system/obsidian/audits/README|진단 감사 저장 규약]]을 따른다.
+
+필수 필드:
+- `source_skill: frontmatter-scan`
+- `kind: audit`
+- `area: system`
+
+본문 구조: 요약 → CRITICAL → WARNING → INFO → 이행 항목
+
 ## 주의사항
 
 - 진단 전용. 수정은 `@frontmatter-doctor`가 수행한다.
-- 이전 스캔 결과와 비교하려면 `01_ops/reviews/`에서 이전 보고서를 참조한다.
+- 이전 스캔 결과와 비교하려면 `_system/obsidian/audits/`에서 이전 보고서를 참조한다.

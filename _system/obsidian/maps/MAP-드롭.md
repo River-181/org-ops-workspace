@@ -57,6 +57,9 @@ tags:
 > - [[260326-drop-0016-테스트]]
 > - [[260401-drop-0017-4종발행]]
 > - [[260403-drop-0018-claude-stats-viz]]
+> - [[260414-drop-0019-report-task-switching]]
+> - [[260415-drop-0020-study-3layers]]
+> - [[260415-drop-0021-numbers-concept-map]]
 
 > [!info]- 발행 규칙
 > - 파일명은 `YYMMDD-drop-NNNN-제목.md`를 유지한다.
