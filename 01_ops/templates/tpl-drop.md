@@ -13,7 +13,7 @@ source:
 link:
 memo:
 visibility: Member
-author: 김주용
+author: [작성자명]
 created:
 published_at:
 up: "[[MAP-드롭]]"

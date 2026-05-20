@@ -96,14 +96,12 @@ tags:
 
 | 스킬 | 호출 | 설명 | 상태 | 출처 |
 |------|------|------|------|------|
-| framework-sync | `/framework-sync` | [볼트명] → org-ops-workspace 동기화 | active | local |
 | platform-setup | `/platform-setup` | Discord 봇·Notion API 초기 연결 — `.env` 생성 및 연결 테스트 | active | local |
 
 ### 외부 도구 연동
 
 | 스킬 | 호출 | 설명 | 상태 | 출처 |
 |------|------|------|------|------|
-| nlm-skill | `/nlm-skill` | NotebookLM CLI + MCP 전문 가이드 | active | local |
 | obsidian:obsidian-cli | 자동/명시 | Obsidian CLI 기반 vault 조작·플러그인 개발 | active | kepano/obsidian-skills |
 | obsidian:obsidian-bases | 자동/명시 | Obsidian Bases (`.base`) 생성·편집 | active | kepano/obsidian-skills |
 | obsidian:obsidian-markdown | 자동/명시 | Obsidian flavored markdown 작성·수정 | active | kepano/obsidian-skills |
@@ -115,12 +113,6 @@ tags:
 ---
 
 ## 도구 연결 스킬 뷰
-
-### nlm
-
-| 스킬 | 호출 | 설명 |
-|------|------|------|
-| nlm-skill | `/nlm-skill` | NotebookLM CLI + MCP 전문 가이드 |
 
 ### figma
 

@@ -33,7 +33,7 @@ tags:
 - 4-5레벨은 프로젝트/세션 내부에서만 허용
 
 ```
-OK:  02_sessions/S01-내우주의시작/materials/slides.pdf     (4레벨)
+OK:  02_sessions/S01-[세션명]/materials/slides.pdf     (4레벨)
 BAD: 01_ops/strategy/2026/spring/week1/draft/memo.md       (7레벨)
 ```
 
@@ -99,6 +99,16 @@ YYMMDD-제목.확장자
 - ~~`OPS-DOC-260311-01_T2_`~~ 코드 조합 네이밍
 - ~~`_live`, `_arch`, `_draft`~~ 파일명 접미사 → frontmatter `status:`로 대체
 - ~~공백~~ 파일명에 공백 대신 하이픈(-) 사용
+
+### 파일명 규칙 예외
+
+외부 시스템과 도구는 파일명 네이밍 규칙 면제:
+
+- `.claude/skills/*/SKILL.md` — Claude Code 플랫폼 규약, `YYMMDD-` 접두사 불가
+- `.claude/skills/*/references/**` — 벤더링된 외부 스킬 참조 파일, 원 포맷 유지
+- `docs/superpowers/**` — 외부 프로토콜 문서, 외부 포맷 유지
+- `_system/tools/*` — 도구별 진입점 파일명 자유 (예: `GitHub.md`, `figma.md`, `syncthing.md`)
+- PRJ 루트 `PROGRESS.md`, `PLAN.md` — 프로젝트 메타 관례 허용
 
 ### 버전 관리
 

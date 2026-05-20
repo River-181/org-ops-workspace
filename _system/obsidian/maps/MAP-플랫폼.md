@@ -21,6 +21,12 @@ tags:
 - [[Notion-Sync]]
 - [[Google-Drive]]
 
+## Syncthing
+
+- [[syncthing]]
+- [[260422-Syncthing-협업-인수인계]]
+- [[260422-Syncthing-팀원온보딩]]
+
 ## 뷰
 
 > [!info]- Discord 세부 뷰

@@ -3,8 +3,7 @@ title: "{이름} 프로필"
 kind: member
 area: library
 status: live
-created:
-  "{ date:YYYY-MM-DD }":
+created: 2026-04-22
 up: "[[members]]"
 role: "[[05_library/members/roles/explorer]]"
 season: S1
@@ -53,7 +52,7 @@ tags:
 
 > 참여한 세션 기록을 여기에 링크한다.
 
-- [[S01-내우주의시작-record|S01 세션 기록]]
+- [[S00-OT-record|S00 세션 기록]]
 
 ---
 

@@ -2,7 +2,7 @@
 title: MOC 운영
 status: live
 created: 2026-03-15
-updated: 2026-03-28
+updated: 2026-04-22
 tags:
   - type/moc
   - ops/moc
@@ -17,6 +17,16 @@ up: "[[MOC-홈]]"
 
 - [[identity]]
 - [[rules]]
+
+## 폴더 진입점
+
+- [[guides]]
+- [[templates]]
+- [[members]]
+- [[meetings]]
+- [[reviews]]
+- [[strategy]]
+- [[posts]]
 
 ## 가이드
 

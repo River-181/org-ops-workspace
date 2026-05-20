@@ -20,7 +20,7 @@ tags:
 
 - [[MOC-스튜디오]]
 - [[04_studio/README|04_studio/README]]
-- [💬 Drops](https://www.notion.so/cnu-psy-stu/e3309c4215c74084bdd3bd92e7a37e47)
+- [💬 Drops]([Notion-드롭-DB-URL])
 
 ## 뷰
 
@@ -59,7 +59,8 @@ tags:
 > - [[260403-drop-0018-claude-stats-viz]]
 > - [[260414-drop-0019-report-task-switching]]
 > - [[260415-drop-0020-study-3layers]]
-> - [[260415-drop-0021-numbers-concept-map]]
+> - [[260418-drop-0021-claude-design-opus47]]
+> - [[260511-drop-0022-chatgpt-go-student]]
 
 > [!info]- 발행 규칙
 > - 파일명은 `YYMMDD-drop-NNNN-제목.md`를 유지한다.
@@ -67,6 +68,6 @@ tags:
 > - 외부 게시 전 원본은 반드시 로컬 Drop 노트에서 먼저 정리한다.
 
 > [!note]- 운영 연결
-> - Notion Drops DB: [💬 Drops](https://www.notion.so/cnu-psy-stu/e3309c4215c74084bdd3bd92e7a37e47)
-> - Discord `#share`: 채널 ID `1486411209556361306`
+> - Notion Drops DB: [💬 Drops]([Notion-드롭-DB-URL])
+> - Discord `#share`: 채널 ID `[Discord-채널-ID]`
 > - CSV 백업: `04_studio/drops/drops.csv`

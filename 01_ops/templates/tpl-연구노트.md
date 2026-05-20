@@ -1,10 +1,9 @@
 ---
-
-title:
+title: 연구노트
 kind: template
 area: ops
-status: draft
-created:
+status: live
+created: 2026-04-22
 tags:
   - research/
 up: "[[MOC-운영]]"
