@@ -13,6 +13,47 @@ created: 2026-03-24
 
 ---
 
+## 2026-05-21 — v1.7.0: Syncthing 가이드, versioning 정책, 폴더 허브, MOC/MAP 정비
+
+### 변경 내용
+
+**신규 가이드 (01_ops/guides/)**
+- `260422-versioning-정책.md` — Semver 기반 볼트 릴리즈 버전 관리 정책
+- `260422-Syncthing-팀원온보딩.md` — Syncthing 팀원 연결 단계별 가이드
+- `260422-Syncthing-협업-인수인계.md` — Syncthing 협업 설정 상태 및 운영 규칙
+- `guides.md` — `01_ops/guides/` 폴더 허브 (Dataview 연결)
+
+**신규 템플릿 (01_ops/templates/)**
+- `templates.md` — `01_ops/templates/` 폴더 허브 (Dataview 연결)
+
+**볼트 구조 개선**
+- `_system/rules.md`: "파일명 규칙 예외" 섹션 추가 (Claude Code skills, superpowers, tools 파일명 면제)
+- `_system/obsidian/design/design.md`: Obsidian 설계 문서 허브 신규
+- `_system/obsidian/README.md`: design/ 폴더 허브 진입점 추가
+- `_system/obsidian/tag-registry.md`: 스텁에서 네임스페이스 구조 포함 파일로 교체
+
+**MOC / MAP 정비**
+- `MOC-운영.md`: "폴더 진입점" 섹션 추가 (guides, templates, members, meetings, reviews, strategy, posts)
+- `MOC-세션.md`: 테이블 형식으로 업데이트 + 세션명 일반화
+- `MOC-프로젝트.md`: "프로젝트 현황" 테이블 구조 업데이트
+- `MAP-스킬.md`: framework-sync, nlm-skill 항목 제거
+- `MAP-드롭.md`: drop-0022 추가, Notion URL/Discord ID 플레이스홀더화
+- `MAP-플랫폼.md`: Syncthing 섹션 추가
+
+**칸반 업데이트**
+- `칸반-메인.md`: PRJ-볼트v3 완료 처리, PRJ-노션DB세팅 보류 이동
+- `칸반-세션.md`: 세션명 일반화
+
+**템플릿 수정**
+- `tpl-drop.md` / `tpl-연구노트.md` / `tpl-멤버프로필.md`: 일반화 및 frontmatter 수정
+
+### 마이그레이션 노트
+
+- Syncthing 가이드의 `[관리자-DEVICE-ID]`, `[FOLDER-ID]`, `[볼트경로]` 등 플레이스홀더를 실제 값으로 교체해야 한다.
+- `MAP-드롭.md`의 `[Notion-드롭-DB-URL]`, `[Discord-채널-ID]`를 실제 값으로 교체해야 한다.
+
+---
+
 ## 2026-04-17 — v1.6.0: session-ops 통합 스킬 + 온보딩 가이드 3종 + RUNBOOK
 
 ### 변경 내용
