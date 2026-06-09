@@ -13,6 +13,51 @@ created: 2026-03-24
 
 ---
 
+## 2026-06-09 — v1.8.0: 세션 후처리 스킬 9종 + graphify + handoff + attendance.base
+
+### 변경 내용
+
+**신규 스킬 (9종)**
+- `session-close` — 세션 종료 마무리 (폴더 감사 + 허브·MOC 링크 갱신 + 메모리 갱신)
+- `session-package` — 멤버 공유 패키징 (`member-share-space/` 폴더 생성·복사·README 작성)
+- `session-research` — 세션 발표 재료 리서치 (plan 읽기 → 주제별 리서치 → materials/ 저장)
+- `session-review` — 세션 후 운영팀 리뷰 초안 생성
+- `session-thread-open` — 세션 당일 Discord 스레드 오프닝 메시지 전송
+- `session-transcript` — 녹음본 2-track 변환 (정제 스크립트 + 세션 정리)
+- `session-announce` — 세션 공지 자동화 (포스터 PNG 캡처 + Discord 초안)
+- `graphify` — 폴더·문서를 지식 그래프로 변환 (interactive HTML + GraphRAG JSON)
+- `handoff` — 세션 간 컨텍스트 바톤 (휘발성 핸드오프, 메모리OS와 독립)
+
+**신규 Base**
+- `_system/obsidian/bases/supporting/attendance.base` — 세션 출석 동적뷰
+- `_system/obsidian/bases/supporting/drops.base` — Drop 동적뷰
+
+**수정 스킬 (6종)**
+- `session-ops` — 서브커맨드 플로우 개선
+- `drop-announce`, `drop-publish` — 발행 워크플로우 정비
+- `platform-setup`, `release` — 설정 가이드 갱신
+- `.claude/skills/MAP-스킬.md` — 신규 스킬 목록 반영
+
+**수정 에이전트 (1종)**
+- `studio-team` — 시각화·배포 파이프라인 개선
+
+**수정 템플릿 (2종)**
+- `tpl-세션기록.md`, `tpl-회의록.md` — frontmatter 및 섹션 갱신
+
+**Obsidian 인프라 갱신**
+- MAP-스킬, MAP-드롭, MAP-멤버, MAP-도구: 최신 스킬 목록 반영
+- MOC-세션, MOC-운영, MOC-프로젝트: 현황 갱신
+- 칸반-세션, 칸반-메인: 진행 상황 반영
+
+### 마이그레이션 노트
+
+- 신규 스킬은 `.claude/skills/{name}/SKILL.md` 구조로 추가됨 (session-announce, graphify 포함)
+- `session-transcript`: `[녹음 앱]` 플레이스홀더를 실제 녹음 앱명(예: Clovanote)으로 교체
+- `graphify`: 별도 Python 패키지 설치 필요 — SKILL.md의 설치 가이드 참조
+- `session-close` / `session-review` / `session-package` / `session-research` / `session-thread-open`: session-ops 워크플로우와 연계하여 사용
+
+---
+
 ## 2026-05-21 — v1.7.0: Syncthing 가이드, versioning 정책, 폴더 허브, MOC/MAP 정비
 
 ### 변경 내용
