@@ -62,64 +62,99 @@ grep "^{실제_drop_number}," 04_studio/drops/drops.csv
 
 `discord_message_id`가 이미 있으면 이 단계를 **skip**.
 
-### author → Discord 멘션 변환
+### 3-1. 메인 메시지 — 카카오톡 공유용 섹션 사용
 
-`_system/tools/.env`의 `DISCORD_USER_{이름}` 변수에서 매핑을 자동으로 구성한다:
+Discord #share 채널에 올라가는 메인 메시지는 **`## 카카오톡 공유용`** 코드블럭 안의 텍스트다. `## 공유 내용`이 아님에 주의.
 
 ```python
-import os
-# 환경변수 DISCORD_USER_{이름} 전체를 읽어 매핑 구성
-author_ids = {}
-for k, v in os.environ.items():
-    if k.startswith('DISCORD_USER_'):
-        name = k[len('DISCORD_USER_'):]
-        author_ids[name] = v
-
-author = "{frontmatter에서 읽은 author 값}"
-mention = f"<@{author_ids[author]}>" if author in author_ids else ""
+import re
+with open(drop_file, 'r') as f:
+    content = f.read()
+match = re.search(r'## 카카오톡 공유용\s*\n```\n(.*?)\n```', content, re.DOTALL)
+kakao_text = match.group(1).strip() if match else ""
 ```
 
-**운영자 ID 등록**: `/platform-setup`을 실행하면 이름↔ID 매핑을 `.env`에 추가할 수 있다.
+### 3-2. 스레드 생성 기준
 
-### 메시지 포맷 구성
+공유 내용의 규모에 따라 스레드 생성 여부를 결정한다:
 
-```
-**{title에서 "Drop #NNNN — " 제거한 제목}**
+| 조건 | 처리 |
+|------|------|
+| `## 공유 내용`에 이미지(`![[...]]`)가 있거나 섹션이 2개 이상 | 스레드 생성 후 전문 발행 |
+| `## 공유 내용`이 짧고(500자 이하) 이미지 없음 | 스레드 없이 #share에만 게시 |
 
-{## 공유 내용 본문}
+**원칙**: 핵심 요약은 #share에, 상세 내용·이미지·코드는 스레드에 분리해 팀원들이 Discord를 정리된 커뮤니티로 사용할 수 있게 한다.
 
-{## 링크 내용}
+### 3-3. 메인 메시지 API 호출
 
-[ Drop | #{drop_number} ]{" — " + mention if mention else ""}
-```
-
-예: `[ 공유 | #0017 ] — <@286397219886858240>`
-
-### API 호출
+> 함정 패턴 (User-Agent 필수, UTF-8, message_id): `_system/platform/Discord/260608-Discord-API-레시피.md` 참조.
 
 ```bash
 source _system/tools/.env
+export PYTHONUTF8=1
 
-MESSAGE_JSON=$(python3 -c "
-import json, sys
-content = '''여기에 구성된 메시지 내용'''
-print(json.dumps({'content': content}))
-")
+# kakao_text는 Step 3-1에서 추출 — python3으로 payload 파일 생성
+python3 - <<'PYEOF'
+import json, pathlib
 
-RESPONSE=$(curl -s -X POST \
+kakao_text = """[Step 3-1에서 추출한 카카오톡 공유용 텍스트]"""
+
+pathlib.Path("/tmp/discord_drop.json").write_text(
+    json.dumps({"content": kakao_text}, ensure_ascii=False), encoding="utf-8"
+)
+PYEOF
+
+MESSAGE_ID=$(curl -s -X POST \
   "https://discord.com/api/v10/channels/$DISCORD_SHARE_CHANNEL_ID/messages" \
   -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
-  -H "User-Agent: DiscordBot (https://[클럽URL], 1.0)" \
+  -H "User-Agent: DiscordBot (https://[클럽명].club, 1.0)" \
   -H "Content-Type: application/json" \
-  -d "$MESSAGE_JSON")
+  --data @/tmp/discord_drop.json \
+  | python3 -c "import json,sys; print(json.load(sys.stdin)['id'])")
 
-echo "$RESPONSE"
-MESSAGE_ID=$(echo "$RESPONSE" | python3 -c "import json,sys; print(json.load(sys.stdin)['id'])")
+rm /tmp/discord_drop.json
 echo "Discord message ID: $MESSAGE_ID"
 ```
 
 **성공**: `id` 필드가 있는 JSON 응답
 **실패**: `code` 필드가 있는 에러 → 에러 내용 출력 후 **중단** (Notion 진행 안 함)
+
+### 3-4. 스레드 생성 (조건 충족 시)
+
+```bash
+THREAD_ID=$(curl -s -X POST \
+  "https://discord.com/api/v10/channels/$DISCORD_SHARE_CHANNEL_ID/messages/$MESSAGE_ID/threads" \
+  -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+  -H "User-Agent: DiscordBot (https://[클럽명].club, 1.0)" \
+  -H "Content-Type: application/json" \
+  -d "{\"name\": \"${제목} 전문\"}" \
+  | python3 -c "import json,sys; print(json.load(sys.stdin)['id'])")
+echo "Thread ID: $THREAD_ID"
+```
+
+### 3-5. 스레드 내 섹션 발행
+
+`## 공유 내용`의 섹션별로 텍스트+이미지를 순서대로 발행한다. 이미지는 `04_studio/assets/etc/`에서 찾는다.
+
+```bash
+# 텍스트 + 이미지 함께 발행 (multipart)
+curl -s -X POST \
+  "https://discord.com/api/v10/channels/$THREAD_ID/messages" \
+  -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+  -H "User-Agent: DiscordBot (https://[클럽명].club, 1.0)" \
+  -F "payload_json=$(python3 -c "import json; print(json.dumps({'content': '섹션 텍스트'}))")" \
+  -F "files[0]=@04_studio/assets/etc/이미지파일.png;type=image/png"
+
+# 텍스트만 발행
+curl -s -X POST \
+  "https://discord.com/api/v10/channels/$THREAD_ID/messages" \
+  -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+  -H "User-Agent: DiscordBot (https://[클럽명].club, 1.0)" \
+  -H "Content-Type: application/json" \
+  -d "$(python3 -c "import json; print(json.dumps({'content': '섹션 텍스트'}))")"
+```
+
+**MIME 타입**: `.png` → `image/png`, `.jpg/.jpeg` → `image/jpeg`, `.gif` → `image/gif`, `.mov` → `video/quicktime`
 
 ---
 
@@ -127,7 +162,7 @@ echo "Discord message ID: $MESSAGE_ID"
 
 `notion_page_id`가 이미 있으면 이 단계를 **skip**.
 
-### Notion MCP 호출
+### 4-1. Notion MCP 시도
 
 `notion-create-pages` 도구 사용:
 
@@ -136,8 +171,6 @@ parent_id: {NOTION_DROPS_DB_ID — 환경변수에서 로드: $NOTION_DROPS_DB_I
 properties:
   Drop (title): "{title}"
   Type (select): "{type}"
-  Tags (multi_select): [drop/* 접두사 제거한 태그들]
-    예: "drop/AI" → "AI", "drop/PKM" → "PKM"
   Source (text): "{source}"
   Link (url): "{link}"
   Memo (text): "{memo}"
@@ -148,8 +181,50 @@ page body (children):
   paragraph: "## 공유 내용\n\n{본문 텍스트}"
 ```
 
-**성공**: page_id 포함 응답
-**실패**: 에러 출력 후 경고 — discord_message_id는 저장, notion_page_id는 비워둠
+**성공**: page_id 포함 응답 → Step 4 완료
+**실패 (Cloudflare 차단 등)**: 경고 출력 후 → **4-2 폴백 실행**
+
+### 4-2. Notion CLI (`ntn`) 폴백
+
+MCP가 실패하면 `ntn`으로 직접 API 호출한다. `ntn`은 시스템 키체인 인증을 사용하므로 별도 토큰 불필요.
+
+```python
+import json, subprocess
+
+payload = {
+    "parent": {"database_id": "{NOTION_DROPS_DB_ID}"},
+    "properties": {
+        "Drop": {"title": [{"text": {"content": "{title}"}}]},
+        "Type": {"select": {"name": "{type}"}},
+        "Source": {"rich_text": [{"text": {"content": "{source}"}}]},
+        "Link": {"url": "{link}"},
+        "Memo": {"rich_text": [{"text": {"content": "{memo}"}}]},
+        "Visibility": {"select": {"name": "{visibility}"}},
+        "Date": {"date": {"start": "{published_at}"}}
+    },
+    "children": [
+        # heading_2: 공유 내용
+        # 섹션별 paragraph / code / bulleted_list_item 블록
+        # heading_2: 링크
+        # 링크 paragraph 블록
+    ]
+}
+
+result = subprocess.run(
+    ["ntn", "api", "v1/pages", "-d", json.dumps(payload)],
+    capture_output=True, text=True
+)
+d = json.loads(result.stdout)
+notion_page_id = d["id"].replace("-", "")
+```
+
+**성공**: `id` 포함 응답 → `notion_page_id` 기록
+**실패**: 에러 출력 후 경고 — `discord_message_id`는 저장, `notion_page_id` 비워둠
+
+> **Drops DB 실제 속성 타입** (ntn으로 확인한 기준):
+> `Drop` (title) / `Type` (select) / `Source` (rich_text) / `Link` (url) /
+> `Memo` (rich_text) / `Visibility` (select) / `Date` (date) /
+> `Attachments` (files) / `Author` (people) / `Tags` (multi_select)
 
 ---
 
@@ -198,16 +273,29 @@ notion_page_id: "{notion_page_id}"
 
 ---
 
-## Step 7: 완료 보고
+## Step 7: 칸반 보드 동기화
+
+frontmatter가 `drop_status: live`로 갱신되었으므로 칸반 보드를 동기화한다:
+
+```bash
+_system/tools/kanban/kanban-sync.sh
+```
+
+발행된 드롭이 `✅ 발행 완료` 컬럼에 없으면 자동으로 추가되며, 이미 있는 경우는 건너뛴다.
+
+---
+
+## Step 8: 완료 보고
 
 사용자에게 출력:
 
 ```
 ✅ Drop #{drop_number} 발행 완료
 
-Discord: https://discord.com/channels/$DISCORD_GUILD_ID/1486411209556361306/{discord_message_id}
+Discord: https://discord.com/channels/$DISCORD_GUILD_ID/[Discord-채널-ID]/{discord_message_id}
 Notion: https://www.notion.so/{notion_page_id}
 CSV: 04_studio/drops/drops.csv 갱신
+칸반: _system/obsidian/kanban/칸반-드롭.md 동기화 완료
 
 파일: {현재 파일명}
 ```

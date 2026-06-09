@@ -1,13 +1,14 @@
 ---
-
-title:
+title: 회의록
 kind: template
 area: ops
-status: draft
-created:
+status: live
+created: 2026-04-22
 tags:
   - ops/meeting
 up: "[[MOC-운영]]"
+related:
+  - "[[결과물 노트]]"
 ---
 
 # 회의록 — {제목}
@@ -42,3 +43,9 @@ up: "[[MOC-운영]]"
 
 - 일시:
 - 주요 안건:
+
+## 관련 문서
+
+> 미팅 목적에 해당하는 결과물(세션·프로젝트·전략 등)을 연결한다. 기준: [[회의-운영-가이드]]
+
+-

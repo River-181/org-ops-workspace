@@ -1,0 +1,36 @@
+filters:
+  and:
+    - file.inFolder("02_sessions")
+    - kind == "session-record"
+formulas:
+  participant_count: if(participants, participants.length, 0)
+properties:
+  session_id:
+    displayName: 회차
+  title:
+    displayName: 세션명
+  created:
+    displayName: 날짜
+  participants:
+    displayName: 참석자
+  formula.participant_count:
+    displayName: 인원
+views:
+  - type: table
+    name: 세션별 출석
+    groupBy:
+      property: session_id
+      direction: ASC
+    order:
+      - session_id
+      - title
+      - created
+      - participants
+      - formula.participant_count
+  - type: cards
+    name: 출석 카드
+    order:
+      - session_id
+      - title
+      - participants
+      - formula.participant_count

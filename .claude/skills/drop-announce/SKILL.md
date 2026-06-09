@@ -347,7 +347,7 @@ NOTION_DROPS_DB_ID="your_db_id"
 
 ## Drop 파일 속성 참조
 
-기존 drop 형식 따름 (필드 순서 엄격히 지킬 것):
+기존 drop-0018 형식 따름 (필드 순서 엄격히 지킬 것):
 - `title`: "Drop #NNNN — [제목]" (반드시 "#" 포함, 큰따옴표 필수)
 - `kind`: "drop" (고정)
 - `area`: "studio" (고정)
@@ -358,7 +358,7 @@ NOTION_DROPS_DB_ID="your_db_id"
 - `tags`: YAML 배열 형식만 허용 (`- type/drop`, `- category/tips`) — 인라인 해시태그 금지
 - `source`: "내부" (자체 제작) | "외부" (외부 링크) | "Discord" (Discord 공유)
 - `link`: 외부 URL (선택)
-- `memo`: 한 줄 설명
+- `memo`: 한 줄 설명 (drops.csv에도 반영됨)
 - `visibility`: "Member" (기본) 또는 "Internal"
 - `created`: YYYY-MM-DD
 - `published_at`: YYYY-MM-DD (발행 전 빈 값)
@@ -366,7 +366,7 @@ NOTION_DROPS_DB_ID="your_db_id"
 - `discord_message_id`: 발행 후 기록
 - `notion_page_id`: 발행 후 기록
 
-**비표준 필드 추가 금지**: `author`, `series`, `updated`, `drop_type` 등 위 목록에 없는 필드는 넣지 말 것.
+**비표준 필드 추가 금지**: `series`, `updated`, `drop_type`, `author` 등 위 목록에 없는 필드는 넣지 말 것.
 
 ---
 
@@ -380,7 +380,7 @@ NOTION_DROPS_DB_ID="your_db_id"
 - 이미지는 `![[파일명.png|700]]` 형식으로 삽입
 - 마지막 줄: `[ Drop | #NNNN ]`
 
-**올바른 구조:**
+**올바른 구조 (drop-0018, drop-0019 참고):**
 ```markdown
 ## 공유 내용
 
@@ -408,6 +408,35 @@ NOTION_DROPS_DB_ID="your_db_id"
 
 ---
 
+## 카카오톡 공유용 섹션 형식
+
+**`## 카카오톡 공유용`은 멤버들에게 카카오톡으로 공유하는 텍스트다. `## 공유 내용`과 별도로 작성한다.**
+
+핵심 원칙:
+- **500자 내외** — 카카오톡 전송에 최적화
+- **두 문단 구성** — 첫 문단: 대상·맥락·핵심 키워드 / 둘째 문단: 주요 기능·포인트·링크
+- **말투**: 친근한 후배에게 존댓말 — "~이에요", "~해요", "~것 같아요", "~죠" 자연스럽게 혼용. 딱딱한 서술체 금지. 불릿 나열보다 자연스러운 줄글 선호.
+- **링크 포함**: 원본 URL 또는 한국어 공식 블로그 링크 우선
+- **디스코드 스레드 연결**: "더 자세한 건 디스코드 스레드에서 볼 수 있어요." 문구로 유도
+- 마지막 줄: `[ Drop | #NNNN ]`
+
+**올바른 구조 (drop-0023, drop-0025 참고):**
+
+```
+[첫 문단: 맥락 소개 + 핵심 키워드. "~이에요" 마무리.]
+
+[둘째 문단: 주요 포인트 + 링크 + 스레드 안내.]
+
+https://링크주소
+
+[ Drop | #NNNN ]
+```
+
+**말투 레퍼런스 (drop-0025):**
+> "Google I/O 2026 정리예요. 구글 유료(Pro) 계정 쓰신다면 이번에 꽤 챙길 게 많아요. 올해 키워드는 '에이전틱 AI'인데, 내가 안 시켜도 배경에서 알아서 돌아가는 AI예요. Gemini가 채팅 도구를 넘어서 Gmail·Docs·캘린더를 24시간 자동 정리하는 에이전트가 됐고, Docs Live는 말로 brain dump만 해도 문서를 완성해줘요."
+
+---
+
 ## 완료 후 출력
 
 ```
@@ -415,7 +444,7 @@ NOTION_DROPS_DB_ID="your_db_id"
 
 📄 Drop 파일: 04_studio/drops/260401-drop-0017-도구4가지.md
 🖼️  이미지 5개: 04_studio/assets/etc/
-💬 Discord: https://discord.com/channels/.../1234567890
+💬 Discord: https://discord.com/channels/.../[Discord-채널-ID]
 📋 Notion: https://www.notion.so/xxxxx
 
 ✅ /drop-publish 자동 실행 완료

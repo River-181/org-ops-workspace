@@ -19,7 +19,6 @@ tags:
 ## 핵심
 
 - [[_system/tools/README|_system/tools/README]]
-- [[nlm]]
 - [[feynman]]
 - [[figma]]
 - [[Kanban]]
@@ -44,7 +43,6 @@ tags:
 
 > [!abstract]- 그래프 링크
 > - [[_system/tools/README|_system/tools/README]]
-> - [[nlm]]
 > - [[feynman]]
 > - [[figma]]
 > - [[Kanban]]

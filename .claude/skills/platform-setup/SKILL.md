@@ -135,7 +135,9 @@ Discord 사용자 ID 가져오는 법:
 ```bash
 source _system/tools/.env
 
-curl -s -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+curl -s \
+  -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+  -H "User-Agent: DiscordBot (https://[클럽명].club, 1.0)" \
   "https://discord.com/api/v10/users/@me" | python3 -c "
 import json, sys
 data = json.load(sys.stdin)

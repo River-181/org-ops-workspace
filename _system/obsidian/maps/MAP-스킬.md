@@ -52,6 +52,13 @@ tags:
 | 스킬 | 호출 | 설명 | 상태 | 출처 |
 |------|------|------|------|------|
 | session-ops | `/session-ops [서브커맨드]` | 세션 수명주기 통합 진입점 — `setup`(폴더 생성) / `launch`(D-N 준비 점검) / `record`(기록 완성) / `guard`(에이전트 대화 세션 관리) | active | local |
+| session-package | `/session-package [세션ID]` | 세션 자료 멤버 공유 폴더 패키징 — 공유 폴더 생성, 파일 복사, 네이밍 통일, README 작성 (세션 전·중·후 언제든) | active | local |
+| session-transcript | `/session-transcript [세션ID]` | 녹음본 2-track 변환 — 정제 스크립트(오염 제거, 원문 보존) + 세션 정리(섹션별 요약) | active | local |
+| session-close | `/session-close [세션ID]` | 세션 종료 마무리 — 폴더 파일 감사 + 허브·MOC-세션 링크 갱신 + 메모리 갱신 | active | local |
+| session-setup | `/session-setup` | 세션 폴더 + 기획안 + 체크리스트 생성 (→ `session-ops setup`로 통합) | deprecated, 유예 2026-07-16 | local |
+| session-launch | `/session-launch` | 세션 D-N일 기준 준비 상태 점검 (→ `session-ops launch`로 통합) | deprecated, 유예 2026-07-16 | local |
+| session-record | `/session-record` | 세션 종료 후 기록 마무리 (→ `session-ops record`로 통합) | deprecated, 유예 2026-07-16 | local |
+| session-guard | `/session-guard` | 에이전트 대화 세션 시작/종료 관리 (→ `session-ops guard`로 통합) | deprecated, 유예 2026-07-16 | local |
 | weekly-review | `/weekly-review` | 볼트 전체 스캔 → 주간 현황 보고 | active | local |
 
 ### 볼트 건강
@@ -78,7 +85,7 @@ tags:
 | memory-update    | `/memory-update`    | 에이전트 메모리 갱신                     | active | local |
 | update-governance | `/update-governance` | 변경사항 라우팅 — active-context / change-log / decisions / CLAUDE.md 판단 | active | local |
 | week-promote     | `/week-promote`     | 주간 승격 — change-log·decisions에서 검증된 패턴을 MEMORY.md로 승격 | active | local |
-| progress-update  | `/progress-update`  | PRJ-볼트v3 PROGRESS 갱신            | active | local |
+| progress-update  | `/progress-update`  | 프로젝트 PROGRESS 갱신            | active | local |
 | inbox-triage     | `/inbox-triage`     | `06_inbox/` 분류 및 라우팅 제안         | active | local |
 
 ### 콘텐츠 & 멤버
@@ -87,6 +94,9 @@ tags:
 |------|------|------|------|------|
 | slide-prep | `/slide-prep` | 슬라이드 MD → 외주 전달용 완성본 | active | local |
 | member-onboard | `/member-onboard` | 새 멤버 운영 DB 파일 생성 | active | local |
+| session-research | `/session-research` | 세션 발표 재료 리서치 — plan → 주제별 리서치 → `materials/` 저장 | active | local |
+| session-review | `/session-review` | 세션 후 운영팀 리뷰 — 목표 달성 점검 → ops 리뷰 초안 → 다음 세션 힌트 | active | local |
+| session-announce | `/session-announce` | 세션 공지 자동화 — 포스터 PNG 캡처 + `#announcements` 초안 발행 직전까지 준비 | active | local |
 | discord-announce | `/discord-announce` | Discord 공지 초안 작성 — 채널별 포맷 자동 적용 | active | local |
 | drop-announce | `/drop-announce` | Drop 공지 자동화 — Excalidraw 카드 생성, 이미지 캡처, Drop 파일 생성 | active | local |
 | drop-publish | `/drop-publish` | Drop 발행 자동화 — Discord + Notion 동시 발행 | active | local |
@@ -97,6 +107,7 @@ tags:
 | 스킬 | 호출 | 설명 | 상태 | 출처 |
 |------|------|------|------|------|
 | platform-setup | `/platform-setup` | Discord 봇·Notion API 초기 연결 — `.env` 생성 및 연결 테스트 | active | local |
+| handoff | `/handoff` | 세션 간 컨텍스트 바톤 — 현재 세션을 일회용 핸드오프 문서로 압축해 `$TMPDIR`에 저장, 새 세션이 이어받음 (메모리OS와 별개의 휘발성 전달) | active | local |
 
 ### 외부 도구 연동
 

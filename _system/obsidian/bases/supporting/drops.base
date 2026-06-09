@@ -1,0 +1,75 @@
+filters:
+  and:
+    - file.inFolder("04_studio/drops")
+    - file.name != "INDEX-드롭-운영"
+properties:
+  file.name:
+    displayName: 파일
+  drop_number:
+    displayName: 번호
+  type:
+    displayName: 타입
+  drop_status:
+    displayName: 상태
+  visibility:
+    displayName: 공개 범위
+  author:
+    displayName: 작성자
+  created:
+    displayName: 생성일
+  published_at:
+    displayName: 발행일
+views:
+  - type: table
+    name: 드롭 카탈로그
+    order:
+      - drop_number
+      - file.name
+      - drop_status
+      - type
+      - visibility
+      - author
+      - created
+      - published_at
+    sort:
+      - property: drop_number
+        direction: DESC
+      - property: type
+        direction: DESC
+    columnSize:
+      note.type: 72
+  - type: table
+    name: 상태별
+    groupBy:
+      property: drop_status
+      direction: ASC
+    order:
+      - drop_number
+      - file.name
+      - type
+      - visibility
+      - author
+      - published_at
+  - type: table
+    name: 타입별
+    groupBy:
+      property: type
+      direction: ASC
+    order:
+      - drop_number
+      - file.name
+      - drop_status
+      - visibility
+      - author
+      - published_at
+  - type: table
+    name: 공개 범위별
+    groupBy:
+      property: visibility
+      direction: ASC
+    order:
+      - drop_number
+      - file.name
+      - type
+      - drop_status
+      - published_at

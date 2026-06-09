@@ -57,15 +57,13 @@ created: 2026-03-24
 
 ### 시스템 & 볼트 구조
 
-| 스킬 | 호출 | 설명 |
-|------|------|------|
-| framework-sync | `/framework-sync` | [볼트명] 범용 프레임워크 → org-ops-workspace 동기화 |
+(추가 예정)
 
 ### 외부 도구 연동
 
 | 스킬 | 호출 | 설명 |
 |------|------|------|
-| nlm-skill | `/nlm-skill` | NotebookLM CLI + MCP 전문 가이드 |
+| platform-setup | `/platform-setup` | Discord·Notion API 초기 연결 — 단계별 안내로 `.env` 생성 및 연결 테스트 |
 
 ---
 

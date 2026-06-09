@@ -177,52 +177,43 @@ source _system/tools/.env
 gh release create {버전} \
   --title "{버전} — {날짜}" \
   --notes "{Step 2에서 작성한 GitHub 릴리즈 노트 전문}" \
-  -R River-181/[조직명]-workspace
+  -R [사용자명]/[저장소명]
 ```
 
 성공하면 릴리즈 URL을 출력. 실패 시 즉시 중단.
 
 ### 4-4. Discord 공지 발행 (ops 스레드)
 
+> 함정 패턴 (User-Agent 필수, UTF-8, message_id): `_system/platform/Discord/260608-Discord-API-레시피.md` 참조.
+
 ```bash
 source _system/tools/.env
+export PYTHONUTF8=1
 
-DISCORD_MSG=$(python3 -c "
-import json
-content = '''{Step 2에서 작성한 Discord 공지 전문}'''
-print(json.dumps({'content': content}))
-")
+python3 - <<'PYEOF'
+import json, pathlib
 
-RESPONSE=$(curl -s -X POST \
+content = """{Step 2에서 작성한 Discord 공지 전문}"""
+
+pathlib.Path("/tmp/discord_release.json").write_text(
+    json.dumps({"content": content}, ensure_ascii=False), encoding="utf-8"
+)
+PYEOF
+
+DISCORD_MSG_ID=$(curl -s -X POST \
   "https://discord.com/api/v10/channels/$DISCORD_OPS_ANNOUNCEMENT_THREAD_ID/messages" \
   -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
-  -H "User-Agent: DiscordBot (https://[클럽URL], 1.0)" \
+  -H "User-Agent: DiscordBot (https://[클럽명].club, 1.0)" \
   -H "Content-Type: application/json" \
-  -d "$DISCORD_MSG")
+  --data @/tmp/discord_release.json \
+  | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('id','ERROR'))")
 
-echo "$RESPONSE"
-DISCORD_MSG_ID=$(echo "$RESPONSE" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('id','ERROR'))")
+rm /tmp/discord_release.json
 echo "Discord message ID: $DISCORD_MSG_ID"
 ```
 
-`id` 필드가 있으면 성공. `code` 필드가 있으면 Discord API 오류.
+`id` 필드가 있으면 성공. `ERROR`가 출력되면 Discord API 오류.
 Discord 실패 시: git push와 GitHub release는 이미 완료이므로 중단하지 않고 경고 출력 + 수동 발행 안내.
-
-**Discord 공지 텍스트에 작은따옴표(')가 포함된 경우 python3 heredoc 충돌 방지:**
-
-```bash
-# 공지 텍스트를 파일로 저장 후 읽기
-cat > /tmp/discord_msg.json << 'JSONEOF'
-{"content": "{공지 내용 — 작은따옴표 있을 경우 이 방식 사용}"}
-JSONEOF
-
-RESPONSE=$(curl -s -X POST \
-  "https://discord.com/api/v10/channels/$DISCORD_OPS_ANNOUNCEMENT_THREAD_ID/messages" \
-  -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
-  -H "User-Agent: DiscordBot (https://[클럽URL], 1.0)" \
-  -H "Content-Type: application/json" \
-  -d @/tmp/discord_msg.json)
-```
 
 ---
 
@@ -274,5 +265,4 @@ change-log.md 갱신 완료
 - Step 3 "go" 승인 전까지 git, gh, curl 명령어를 절대 실행하지 않는다.
 - 버전 태그는 항상 `v` 접두사 포함 (예: `v0.4`, `v0.4.1`, `v1.0`).
 - `_system/tools/.env` 내용(토큰 값)을 출력하거나 로그에 남기지 않는다.
-- GitHub 저장소: `River-181/[조직명]-workspace`
 - Discord ops 스레드 채널 ID: `$DISCORD_OPS_ANNOUNCEMENT_THREAD_ID` (`.env`에서 로드)

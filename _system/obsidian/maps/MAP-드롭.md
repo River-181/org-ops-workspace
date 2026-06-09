@@ -51,7 +51,7 @@ tags:
 > - [[260206-drop-0010-codex53-opus46]]
 > - [[260217-drop-0011-claude-agent-teams]]
 > - [[260305-drop-0012-openclaw-gcp-discord]]
-
+> - [[260310-drop-0013-[클럽명]-ot-timeful]]
 > - [[260320-drop-0014-claude-pro-coupon]]
 > - [[260326-drop-0015-cursor-composer2]]
 > - [[260326-drop-0016-테스트]]
@@ -61,6 +61,13 @@ tags:
 > - [[260415-drop-0020-study-3layers]]
 > - [[260418-drop-0021-claude-design-opus47]]
 > - [[260511-drop-0022-chatgpt-go-student]]
+> - [[260519-drop-0023-vibe-coding-ar-run]]
+> - [[260521-drop-0024-google-io-2026]]
+> - [[260521-drop-0025-chrome-gemini-notebooklm]]
+> - [[260522-drop-0026-perplexity-web-mcp]]
+> - [[260528-drop-0027-notion-cli]]
+> - [[260603-drop-0028-hermes-agent]]
+> - [[260604-drop-0029-harnessed-llm-agent]]
 
 > [!info]- 발행 규칙
 > - 파일명은 `YYMMDD-drop-NNNN-제목.md`를 유지한다.
