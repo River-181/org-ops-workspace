@@ -8,7 +8,7 @@ updated: 2026-03-28
 up: "[[MOC-시스템]]"
 tags:
   - type/map
-  - system/agent
+  - system/agents
 ---
 
 # MAP-에이전트
@@ -34,7 +34,7 @@ tags:
 
 ## 가이드
 
-- 현재 동작 기준 문서는 `active-context`, 구조 기준 문서는 아키텍처와 프로토콜 문서다. (슬림화 원칙 — 핵심 상태만 유지, 상세 이력은 `change-log`로 분리)
+- 현재 동작 기준 문서는 `active-context`, 구조 기준 문서는 아키텍처와 프로토콜 문서다. (2026-04-16 슬림화 — 핵심 상태만 유지, 상세 이력은 `change-log`로 분리)
 - 폴더별 분포나 누락을 볼 때만 Base로 내려가고, 실제 실행 규칙은 프로토콜 문서를 읽는다.
 - 레거시 프로필과 로그는 그래프 보존용으로 아래에 접어 둔다.
 
@@ -60,6 +60,11 @@ tags:
 > ### 레거시 프로필
 > - [[_system/agents/profiles/[클럽명]-ops|[클럽명]-ops]]
 > - [[_system/agents/profiles/[클럽명]-thinker|[클럽명]-thinker]]
+> - [[_system/agents/profiles/[클럽명]-chronicle|[클럽명]-chronicle]]
+> - [[_system/agents/profiles/[클럽명]-craft|[클럽명]-craft]]
+> - [[_system/agents/profiles/[클럽명]-garden|[클럽명]-garden]]
+> - [[_system/agents/profiles/[클럽명]-librarian|[클럽명]-librarian]]
+> - [[_system/agents/profiles/[클럽명]-meta|[클럽명]-meta]]
 >
 > ### 로그
 > - [[260313-백업-병합-리포트]]

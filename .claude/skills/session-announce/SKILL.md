@@ -26,7 +26,7 @@ allowed-tools: Read, Edit, Write, Bash, mcp__plugin_chrome-devtools-mcp_chrome-d
 ## 전제 조건
 
 - 세션 plan 파일이 존재하고 날짜·장소·프로그램이 확정되어 있어야 함
-- `04_studio/brand/web/260525-poster-template-v1.html` — 포스터 템플릿 존재
+- `04_studio/brand/web/poster-template-v2.html` — 포스터 템플릿 존재
 - Chrome DevTools MCP 연결됨
 
 ---
@@ -51,11 +51,11 @@ plan 파일에서 추출할 정보:
 | `program` | `[{part, title, presenter}, ...]` |
 | `date` | `"05.30 (토)"` |
 | `time` | `"10:00 ~ 12:00"` |
-| `place` | `"충남대 도서관 크리에이티브존1\n별관1층 그룹스터디룸 9"` |
+| `place` | `"[장소]"` |
 
 ### 2. 포스터 템플릿 업데이트
 
-`04_studio/brand/web/260525-poster-template-v1.html` 최상단 `POSTER` 객체를 세션 정보로 수정:
+`04_studio/brand/web/poster-template-v2.html` 최상단 `POSTER` 객체를 세션 정보로 수정:
 
 ```js
 const POSTER = {
@@ -65,23 +65,23 @@ const POSTER = {
   subtitle: "2026 Spring  ·  첫 정규세션",
   tags:     ["AX", "컨텍스트", "오프라인"],
   program: [
-    { part: "1부", title: "AI 시대, 왜 지금인가", presenter: "주용" },
-    { part: "2부", title: "대학생활에서 AX 시작하기", presenter: "동하" },
+    { part: "1부", title: "AI 시대, 왜 지금인가", presenter: "[멤버명1]" },
+    { part: "2부", title: "대학생활에서 AX 시작하기", presenter: "[멤버명2]" },
   ],
   date:   "05.30 (토)",
   time:   "10:00 ~ 12:00",
-  place:  "충남대 도서관 크리에이티브존1\n별관1층 그룹스터디룸 9",
+  place:  "[장소]",
   visual: "orbit",
 };
 ```
 
-**theme 참조표**
+**theme 참조표** (토큰값: `design-tokens.css` 기준)
 
 | theme | 색상 | 용도 |
 |-------|------|------|
 | `silver` | #D0D0D0 | 정규 세션 기본 |
-| `purple` | #7C3AED | 시즌 오픈 |
-| `blue` | #B4DCFF | 딥다이브·리서치 |
+| `purple` | `var(--[클럽명]-accent-purple)` #8B74E8 | 시즌 오픈·중요 강연 |
+| `blue` | `var(--[클럽명]-accent-blue)` #BFD8F5 | 딥다이브·리서치 |
 | `teal` | #14B8A6 | 커뮤니티·네트워킹 |
 | `amber` | #F59E0B | 스페셜 이벤트 |
 
@@ -90,7 +90,7 @@ const POSTER = {
 #### 3-1. Chrome DevTools MCP로 열기
 
 ```
-new_page url="file:///절대경로/04_studio/brand/web/260525-poster-template-v1.html"
+new_page url="file:///절대경로/04_studio/brand/web/poster-template-v2.html"
 ```
 
 이미 열려 있으면:
@@ -266,7 +266,7 @@ rm /tmp/discord_payload.json
 
 | 파일 | 경로 |
 |------|------|
-| 포스터 템플릿 | `04_studio/brand/web/260525-poster-template-v1.html` |
+| 포스터 템플릿 | `04_studio/brand/web/poster-template-v2.html` |
 | 포스터 PNG | `04_studio/assets/etc/YYMMDD-{세션ID}-poster.png` |
 | 공지 초안 | `01_ops/posts/YYMMDD-announce-{세션슬러그}세션공지.md` |
 
@@ -277,7 +277,7 @@ rm /tmp/discord_payload.json
 ```
 세션 plan 확정
   ↓
-poster-template-v1.html POSTER 객체 업데이트 (Edit)
+poster-template-v2.html POSTER 객체 업데이트 (Edit)
   ↓
 Chrome DevTools MCP → new_page → evaluate_script (위치 파악)
   → take_screenshot fullPage → Bash sips 크롭 → PNG 저장

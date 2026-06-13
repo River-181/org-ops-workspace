@@ -29,7 +29,12 @@ argument-hint: "[슬라이드 파일 경로]"
 
 ### 2. 디자인 스펙 섹션 추가 (없을 경우)
 
-파일 상단 본문 시작 직전에 삽입:
+모드 선택 — 작업 전 확인:
+- **Dark 모드** (`data-mode="dark"`, `#0C0B10` 배경): 세션 슬라이드, 기술 콘텐츠 (기본)
+- **Light 모드** (`data-mode="light"`, `#F4F1EA` 배경): 브랜드 소개, 운영자료, 외부 공개용
+- 모드가 불분명하면 사용자에게 "세션·기술용(Dark)인가, 브랜드·외부용(Light)인가?" 확인.
+
+파일 상단 본문 시작 직전에 삽입 (Dark 모드 기본값 — Light면 괄호 안 값으로 교체):
 
 ```markdown
 ## 디자인 스펙
@@ -37,13 +42,16 @@ argument-hint: "[슬라이드 파일 경로]"
 | 항목 | 값 |
 |------|-----|
 | 규격 | 1920 × 1080px (16:9) |
-| 배경 | Space Black `#000000` |
-| 강조색 | Odyssey Purple `#7C3AED` |
-| 보조색 | Cosmic Blue-White `#B4DCFF` |
-| 제목 폰트 | Noto Serif KR Bold |
-| 본문 폰트 | Pretendard Regular / Medium |
-| 영문 UI 폰트 | Inter |
-| 코드 폰트 | JetBrains Mono |
+| 모드 | Dark (세션/기술) ← Light(브랜드/외부)로 변경 가능 |
+| 배경 | `var(--bg)` — Dark: `#0C0B10` / Light: `#F4F1EA` |
+| 강조색 | `var(--accent)` — Dark: `#8B74E8` / Light: `#6F56D8` |
+| 보조색 | `var(--[클럽명]-accent-blue)` `#BFD8F5` |
+| 제목 폰트 | `var(--[클럽명]-font-display)` Noto Serif KR Bold |
+| 본문 폰트 | `var(--[클럽명]-font-body)` Pretendard Regular / Medium |
+| 영문 UI 폰트 | `var(--[클럽명]-font-ui)` Inter |
+| 코드 폰트 | `var(--[클럽명]-font-code)` JetBrains Mono |
+
+> 토큰 전체: `04_studio/brand/system/design-tokens.css` (SSOT)
 
 ### 슬라이드 유형별 스타일
 
@@ -59,8 +67,6 @@ argument-hint: "[슬라이드 파일 경로]"
 
 {슬라이드 파트 구조를 파일 내용에서 파악하여 여기에 채운다}
 ```
-
-> 색상 HEX는 `04_studio/brand/260312-디자인가이드.md` 참조 (변경되었을 수 있음)
 
 ### 3. 이미지 가이드 콜아웃 삽입
 
@@ -91,9 +97,9 @@ argument-hint: "[슬라이드 파일 경로]"
 > [!example]- 🤖 Gemini 다이어그램 프롬프트
 > ```
 > Create a {diagram type} for a presentation slide.
-> Canvas: 1920×1080px, dark background #000000.
+> Canvas: 1920×1080px, dark background #0C0B10 (var(--bg) Dark).
 > {구조 설명 — 레이어, 노드, 흐름 등}
-> Color palette: purple #7C3AED, blue-white #B4DCFF, white #FFFFFF.
+> Color palette: purple #8B74E8 (var(--accent)), blue #BFD8F5 (var(--[클럽명]-accent-blue)), white #FFFFFF.
 > Style: clean, minimal, modern. No decorative elements. Font: Inter.
 > ```
 ```
@@ -124,5 +130,7 @@ argument-hint: "[슬라이드 파일 경로]"
 
 ## 참고
 
-- 브랜드 색상: `04_studio/brand/260312-디자인가이드.md`
+- 디자인 SSOT: `04_studio/brand/system/DESIGN_SYSTEM.md` (모드 결정 트리 포함)
+- 토큰 전체: `04_studio/brand/system/design-tokens.css`
+- 슬라이드 레시피: `04_studio/brand/system/recipes/slide.md` (색상 마이그레이션 v1→v2 표 포함)
 - 사례 파일: `02_sessions/S00-OT/materials/클럽소개-슬라이드.md`

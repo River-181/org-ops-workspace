@@ -13,8 +13,8 @@ source:
 link:
 memo:
 visibility: Member
-author: [작성자명]
-created:
+author: [멤버명]
+created: 2026-04-22
 published_at:
 up: "[[MAP-드롭]]"
 discord_message_id:

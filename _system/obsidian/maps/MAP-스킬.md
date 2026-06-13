@@ -7,7 +7,7 @@ created: 2026-03-24
 up: "[[MOC-시스템]]"
 tags:
   - type/map
-  - system/agent
+  - system/agents
 ---
 
 # MAP-스킬
@@ -75,6 +75,9 @@ tags:
 | clean-sweep | `/clean-sweep` | Icon·빈 폴더·.DS_Store·중복 탐지 | active | local |
 | tool-governance | `/tool-governance` | `_system/tools` 운영 전반 점검 및 정리 | active | local |
 
+> [!note] 결과 저장 경로 표준화 (2026-04-16)
+> 위 진단 스킬(vault-health, link-audit, tag-audit, frontmatter-scan, manifest-check, verify-implementation) 실행 결과는 [[_system/obsidian/audits/README|진단 감사 저장 규약]]에 따라 `_system/obsidian/audits/`에 저장한다.
+
 ### 지식 관리
 
 | 스킬               | 호출                  | 설명                              | 상태     | 출처    |
@@ -85,27 +88,28 @@ tags:
 | memory-update    | `/memory-update`    | 에이전트 메모리 갱신                     | active | local |
 | update-governance | `/update-governance` | 변경사항 라우팅 — active-context / change-log / decisions / CLAUDE.md 판단 | active | local |
 | week-promote     | `/week-promote`     | 주간 승격 — change-log·decisions에서 검증된 패턴을 MEMORY.md로 승격 | active | local |
-| progress-update  | `/progress-update`  | 프로젝트 PROGRESS 갱신            | active | local |
+| progress-update  | `/progress-update`  | PRJ-볼트v3 PROGRESS 갱신            | active | local |
 | inbox-triage     | `/inbox-triage`     | `06_inbox/` 분류 및 라우팅 제안         | active | local |
 
 ### 콘텐츠 & 멤버
 
-| 스킬 | 호출 | 설명 | 상태 | 출처 |
-|------|------|------|------|------|
-| slide-prep | `/slide-prep` | 슬라이드 MD → 외주 전달용 완성본 | active | local |
-| member-onboard | `/member-onboard` | 새 멤버 운영 DB 파일 생성 | active | local |
-| session-research | `/session-research` | 세션 발표 재료 리서치 — plan → 주제별 리서치 → `materials/` 저장 | active | local |
-| session-review | `/session-review` | 세션 후 운영팀 리뷰 — 목표 달성 점검 → ops 리뷰 초안 → 다음 세션 힌트 | active | local |
+| 스킬               | 호출                  | 설명                                                      | 상태     | 출처    |
+| ---------------- | ------------------- | ------------------------------------------------------- | ------ | ----- |
+| slide-prep       | `/slide-prep`       | 슬라이드 MD → 외주 전달용 완성본                                    | active | local |
+| member-onboard   | `/member-onboard`   | 새 멤버 운영 DB 파일 생성                                        | active | local |
+| session-research | `/session-research` | 세션 발표 재료 리서치 — plan → 주제별 리서치 → `materials/` 저장         | active | local |
+| session-review   | `/session-review`   | 세션 후 운영팀 리뷰 — 목표 달성 점검 → ops 리뷰 초안 → 다음 세션 힌트           | active | local |
 | session-announce | `/session-announce` | 세션 공지 자동화 — 포스터 PNG 캡처 + `#announcements` 초안 발행 직전까지 준비 | active | local |
-| discord-announce | `/discord-announce` | Discord 공지 초안 작성 — 채널별 포맷 자동 적용 | active | local |
-| drop-announce | `/drop-announce` | Drop 공지 자동화 — Excalidraw 카드 생성, 이미지 캡처, Drop 파일 생성 | active | local |
-| drop-publish | `/drop-publish` | Drop 발행 자동화 — Discord + Notion 동시 발행 | active | local |
-| release | `/release` | 릴리즈 초안 → 승인 → GitHub 릴리즈 + Discord 공지 | active | local |
+| discord-announce | `/discord-announce` | Discord 공지 초안 작성 — 채널별 포맷 자동 적용                         | active | local |
+| drop-announce    | `/drop-announce`    | Drop 공지 자동화 — Excalidraw 카드 생성, 이미지 캡처, Drop 파일 생성      | active | local |
+| drop-publish     | `/drop-publish`     | Drop 발행 자동화 — Discord + Notion 동시 발행                    | active | local |
+| release          | `/release`          | 릴리즈 초안 → 승인 → GitHub 릴리즈 + Discord 공지                   | active | local |
 
 ### 시스템
 
 | 스킬 | 호출 | 설명 | 상태 | 출처 |
 |------|------|------|------|------|
+| framework-sync | `/framework-sync` | [볼트명] → org-ops-workspace 동기화 | active | local |
 | platform-setup | `/platform-setup` | Discord 봇·Notion API 초기 연결 — `.env` 생성 및 연결 테스트 | active | local |
 | handoff | `/handoff` | 세션 간 컨텍스트 바톤 — 현재 세션을 일회용 핸드오프 문서로 압축해 `$TMPDIR`에 저장, 새 세션이 이어받음 (메모리OS와 별개의 휘발성 전달) | active | local |
 
@@ -113,6 +117,7 @@ tags:
 
 | 스킬 | 호출 | 설명 | 상태 | 출처 |
 |------|------|------|------|------|
+| nlm-skill | `/nlm-skill` | NotebookLM CLI + MCP 전문 가이드 | active | local |
 | obsidian:obsidian-cli | 자동/명시 | Obsidian CLI 기반 vault 조작·플러그인 개발 | active | kepano/obsidian-skills |
 | obsidian:obsidian-bases | 자동/명시 | Obsidian Bases (`.base`) 생성·편집 | active | kepano/obsidian-skills |
 | obsidian:obsidian-markdown | 자동/명시 | Obsidian flavored markdown 작성·수정 | active | kepano/obsidian-skills |
@@ -124,6 +129,12 @@ tags:
 ---
 
 ## 도구 연결 스킬 뷰
+
+### nlm
+
+| 스킬 | 호출 | 설명 |
+|------|------|------|
+| nlm-skill | `/nlm-skill` | NotebookLM CLI + MCP 전문 가이드 |
 
 ### figma
 

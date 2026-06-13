@@ -1,12 +1,11 @@
 ---
-
-title:
+title: 세션 기획안
 kind: template
 area: ops
-status: draft
-created:
+status: live
+created: 2026-04-22
 tags:
-  - session/S__
+  # - session/S__  ← 복사 후 실제 세션 번호로 교체
 up: "[[MOC-운영]]"
 ---
 

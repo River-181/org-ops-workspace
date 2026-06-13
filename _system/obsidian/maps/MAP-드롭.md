@@ -68,6 +68,8 @@ tags:
 > - [[260528-drop-0027-notion-cli]]
 > - [[260603-drop-0028-hermes-agent]]
 > - [[260604-drop-0029-harnessed-llm-agent]]
+> - [[260610-drop-0030-claude-fable5-mythos5]]
+> - [[260610-drop-0031-claude-cowork-promo]]
 
 > [!info]- 발행 규칙
 > - 파일명은 `YYMMDD-drop-NNNN-제목.md`를 유지한다.

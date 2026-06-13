@@ -6,10 +6,10 @@ argument-hint: "[세션ID]"
 
 # session-close
 
-세션 종료 후 3단계 마무리를 한 번에 완료한다:
+세션 종료 후 마무리를 한 번에 완료한다. **닫기 = 세션을 done으로 확정하고 plan을 아카이브**.
 
-1. 세션 폴더 파일 감사 (frontmatter, 네이밍, status)
-2. 허브 파일·MOC-세션 갱신 (링크 연결)
+1. 세션 폴더 파일 감사 (frontmatter, 네이밍, status) + plan.md archived
+2. 허브 파일 갱신 (session_status → done, 링크 연결) · MOC-세션 갱신
 3. 에이전트 메모리 갱신 (active-context, change-log)
 
 **전제 조건**: `S{NN}-{슬러그}-record.md`가 `status: live` 상태일 것.
@@ -47,9 +47,24 @@ find "02_sessions/S{NN}-*" -name "*.md" | head -30
 
 record.md가 `status: live`인지 반드시 확인. draft면 사용자에게 알리고 중단.
 
+**plan.md 아카이브** (닫기 전용 예외 처리):
+`S{NN}-{슬러그}-plan.md`의 `status`를 `archived`로 변경한다. plan.md는 세션이 종료되면 그 목적이 소진되므로, 닫기 시점에 archived로 전환하는 것이 정상 흐름이다(일반 draft 파일 자동 변경 금지 원칙의 예외).
+
+```yaml
+status: archived   # plan.md 전용 — 닫기 완료 시 자동 적용
+```
+
 ### 2. 허브 파일 갱신
 
 `02_sessions/S{NN}-{슬러그}/S{NN}-{슬러그}.md` 읽기 후 갱신:
+
+**session_status 전환** (닫기의 핵심 상태 확정):
+`session_status`를 `done`으로 변경한다. `status`(문서 상태)는 `live`를 **유지**한다 — 허브 문서는 동결하지 않고 계속 참조 가능해야 한다.
+
+```yaml
+session_status: done   # prep → done (세션 종료 확정)
+status: live           # 그대로 유지 — 허브 문서는 아카이브하지 않음
+```
 
 **확인·추가 항목**:
 - `## 문서` 섹션: `[[S{NN}-{슬러그}-record]]` 링크 존재 여부
@@ -143,11 +158,13 @@ _system/tools/kanban/kanban-sync.sh
 
 📋 파일 감사
   정상: {N}개 파일
+  ✓ plan.md → archived (닫기 완료)
   ⚠️ draft 상태: {파일 목록} (사용자 확인 필요)
   ⚠️ frontmatter 누락: {파일 목록}
 
 🔗 갱신된 파일
   ✓ 허브 파일: 02_sessions/S{NN}-{슬러그}/S{NN}-{슬러그}.md
+      session_status: done / status: live 유지
   ✓ MOC-세션: _system/obsidian/mocs/MOC-세션.md
   ✓ 칸반 보드 동기화 완료
   ✓ active-context.md

@@ -10,7 +10,7 @@ description: 콘텐츠 제작, 플랫폼별 발행, 에셋 관리
 
 1. `_system/agents/memory/active-context.md`를 읽어 현재 상태를 파악한다.
 2. `_system/platform/Discord/ops-space/Discord-MOC.md`에서 Discord 운영 현황을 확인한다.
-3. `04_studio/brand/260312-디자인가이드.md`에서 브랜드 가이드를 확인한다 (발행물 제작 시).
+3. `04_studio/brand/system/DESIGN_SYSTEM.md`에서 브랜드 가이드를 확인한다 (발행물 제작 시).
 
 ## 읽기 범위
 
@@ -18,6 +18,10 @@ description: 콘텐츠 제작, 플랫폼별 발행, 에셋 관리
 - `04_studio/` — 브랜드 에셋, 디자인 가이드
 - `02_sessions/` — 세션 내용 (발행 소스)
 - `_system/platform/Discord/` — Discord 운영 규칙
+- `_system/identity/brand.md` — 콘텐츠 톤·클럽 퍼스낼리티 참조
+- `_system/identity/platform.md` — 플랫폼 역할·경계 (로컬→외부 게시 방향 원칙)
+
+> 시각 산출물(포스터, 이미지, HTML 에셋 등)이 필요한 경우 `@studio-team`에 위임한다. 발행자는 텍스트 콘텐츠·배포 워크플로우를 담당하며 시각 제작은 중복하지 않는다.
 
 ## 쓰기 범위
 

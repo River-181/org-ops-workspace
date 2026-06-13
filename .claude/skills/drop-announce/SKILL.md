@@ -120,8 +120,9 @@ for i in "${!ITEMS[@]}"; do
     X=$((CARD_X_OFFSET + COL * GAP_X))
     Y=$((CARD_Y_OFFSET + ROW * GAP_Y))
     
-    # 색상 로테이션
-    COLORS=("#d3f9d8" "#ffd8a8" "#a5d8ff" "#d0bfff")
+    # 색상 로테이션 — [클럽명] Light 팔레트 4종 (design-tokens.css --[클럽명]-brand-light-* 계열)
+    # 라벤더 / 페이퍼 / 실버블루 / 브라운 틴트
+    COLORS=("#EDE7F8" "#F4F1EA" "#E8EDF2" "#F2EAE0")
     COLOR=${COLORS[$i % 4]}
     
     ELEMENTS+="
@@ -135,10 +136,12 @@ for i in "${!ITEMS[@]}"; do
       \"backgroundColor\": \"$COLOR\",
       \"fillStyle\": \"solid\",
       \"roundness\": {\"type\": 3},
-      \"strokeColor\": \"#1e1e1e\",
+      \"strokeColor\": \"#3A4147\",
+      \"strokeWidth\": 1,
       \"label\": {
         \"text\": \"$NUM $NAME\\nby $AUTHOR\\n\\n$DESC\",
-        \"fontSize\": 16
+        \"fontSize\": 16,
+        \"fontColor\": \"#1A1813\"
       }
     },"
 done

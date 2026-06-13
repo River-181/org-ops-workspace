@@ -13,6 +13,45 @@ created: 2026-03-24
 
 ---
 
+## 2026-06-13 — v1.9.0: project-close · studio-gallery 신규 + 스튜디오/디자인 인프라 확장
+
+### 변경 내용
+
+**신규 스킬 (2종)**
+- `project-close`: 프로젝트(PRJ-*) 종료 마무리 — PROGRESS 최종화 + 허브 정합 + 메모리 갱신
+- `studio-gallery`: 스튜디오 코크핏 — 시각 산출물·레퍼런스 스캔 → 라이브 갤러리
+
+**신규 템플릿 (2종)**
+- `tpl-디자인러닝`, `tpl-디자인브리프`: 디자인 작업·외주 브리프 표준
+
+**신규 MOC**: `MOC-온보딩` (운영팀 3단계 온보딩 허브)
+
+**신규 레퍼런스 (3종)**: handoff 방법론, oh-my-claudecode 간단설명서, Figma Auto Layout 노하우
+
+**수정 스킬 (8종)**: drop-announce, drop-publish, platform-setup, release, session-announce, session-close, session-thread-open, slide-prep
+- drop-publish / session-thread-open: MCP 버전 → 스크립트 버전으로 정본 교체
+- release: GitHub release + Discord 공지 단계 확장
+
+**수정 에이전트 (3종)**: prep, publish, studio-team (studio-team에 Mode 0·D 추가, 서브에이전트 표 갱신)
+
+**수정 템플릿 (4종)**: tpl-drop, tpl-세션기록, tpl-세션기획, tpl-연구노트
+
+**Obsidian 인프라 갱신**
+- MAP-도구·드롭·스킬·에이전트: 최신 스킬·에이전트 7종 반영
+- MOC-세션·스튜디오·시스템·운영·프로젝트·홈: 현황 + 브랜드/코크핏 허브 반영
+- 칸반-드롭·메인·세션, design/칸반시스템-구현계획: 정합 갱신
+- indexes 2종 (파일명-코드-참조규칙, 폴더-라우팅-인덱스)
+
+**도구 레지스트리**: `_system/tools/README.md` 범용 도구 표 확장 (nlm 제외 유지)
+
+### 마이그레이션 노트
+
+- studio-team 에이전트 Boot 시퀀스가 `DESIGN_SYSTEM.md`를 참조하도록 변경 — 각 조직의 디자인 시스템 문서 경로 확인 필요
+- studio-gallery: `studio-manifest.js` 생성 후 `studio.html`에서 라이브 갤러리 사용
+- drop-publish / session-thread-open: 스크립트 버전으로 전환됨 — 기존 MCP 버전 의존 워크플로 점검
+
+---
+
 ## 2026-06-09 — v1.8.0: 세션 후처리 스킬 9종 + graphify + handoff + attendance.base
 
 ### 변경 내용

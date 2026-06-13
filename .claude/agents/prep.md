@@ -17,6 +17,7 @@ description: 세션 기획안 작성, 자료 준비, 체크리스트 관리
 - `02_sessions/backlog/` — 미배정 세션 아이디어
 - `05_library/research/` — 관련 리서치 자료
 - `01_ops/templates/` — 템플릿
+- `_system/identity/workflow.md` — 세션·모임 구조 SSOT (주기·길이·산출 아티팩트·폴더 패턴·운영팀)
 
 ## 쓰기 범위
 

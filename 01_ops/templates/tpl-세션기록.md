@@ -10,7 +10,7 @@ plan: "[[S{NN}-plan]]"
 participants: []
 materials: []
 tags:
-  - session/S{NN}
+  # - session/S{NN}  ← 복사 후 실제 세션 번호로 교체
   - session/record
 ---
 
