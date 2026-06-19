@@ -13,6 +13,27 @@ created: 2026-03-24
 
 ---
 
+## 2026-06-20 — v1.9.2: MEMORY.md 구조 스텁 + 도구 레지스트리 갱신
+
+### 변경 내용
+
+**메모리 시스템**
+- `_system/agents/memory/MEMORY.md`: 빈 스텁 → 장기기억 구조 템플릿으로 교체. 클럽 프로필·운영 패턴·교훈·도구 선택 근거·시즌 기록 섹션이 포함된 채우기 가능한 스텁.
+
+**도구 레지스트리 (`_system/tools/README.md`)**
+- `skillspector` 행 신규 추가 — 외부 AI 스킬 보안 스캐너 (정적 분석 64패턴/16카테고리 + LLM 의미분석)
+- `im-not-ai` 행 신규 추가 — 외부 AI 스킬 패키지 전역 심링크 설치 패턴
+- `graphify` 행 업데이트 — v0.8.36, `graph-update.sh` 빌드 스크립트 방식, `memory.recall`과 역할 분담 명시
+
+### 마이그레이션 노트
+
+- `MEMORY.md`의 `[클럽명]`, `[클럽 설명]` 등 플레이스홀더를 실제 클럽 정보로 교체한다.
+- `skillspector` 사용 시 `_system/tools/skillspector/`에 격리 설치 후 `.gitignore` 추가.
+- `im-not-ai` 패턴을 따르는 외부 스킬 패키지는 `_system/tools/<패키지명>/`에 설치 후 `./install.sh --claude-only`로 전역 심링크.
+- graphify 그래프 빌드는 `bash _system/tools/graphify/graph-update.sh`로 실행.
+
+---
+
 ## 2026-06-20 — v1.9.1: slide-prep 스타일 선택 Step 0 추가 + MAP-드롭 0032
 
 ### 변경 내용
