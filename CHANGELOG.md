@@ -13,6 +13,23 @@ created: 2026-03-24
 
 ---
 
+## 2026-06-20 — v1.9.1: slide-prep 스타일 선택 Step 0 추가 + MAP-드롭 0032
+
+### 변경 내용
+
+**수정 스킬 (1종)**
+- `slide-prep`: Step 0 (스타일 선택) 신규 추가 — 덱 단위로 스타일(스탠다드·손그림·미니멀모노·브랜드라이트·레고) 하나를 먼저 고르고 기본 모드를 자동 결정하는 흐름으로 개선. Step 2 도입부가 Step 0 결정을 참조하도록 업데이트.
+
+**수정 맵 (1종)**
+- `MAP-드롭`: drop-0032(`260616-drop-0032-naver-internship-2026`) 그래프 링크 추가.
+
+### 마이그레이션 노트
+
+- `slide-prep` 사용 시 덱 작업 전 Step 0에서 스타일부터 선정한다. 스타일 상세 및 결정 트리는 `04_studio/brand/system/recipes/slide-styles.md` 참조.
+- 손그림 스타일 선택 시 Excalidraw 템플릿(`04_studio/excalidraw/templates/슬라이드-손그림.excalidraw.md`) 분기를 따른다.
+
+---
+
 ## 2026-06-13 — v1.9.0: project-close · studio-gallery 신규 + 스튜디오/디자인 인프라 확장
 
 ### 변경 내용
