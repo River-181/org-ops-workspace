@@ -70,6 +70,7 @@ tags:
 > - [[260604-drop-0029-harnessed-llm-agent]]
 > - [[260610-drop-0030-claude-fable5-mythos5]]
 > - [[260610-drop-0031-claude-cowork-promo]]
+> - [[260616-drop-0032-naver-internship-2026]]
 
 > [!info]- 발행 규칙
 > - 파일명은 `YYMMDD-drop-NNNN-제목.md`를 유지한다.
