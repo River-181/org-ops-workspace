@@ -4,7 +4,7 @@ kind: map
 area: system
 status: live
 created: 2026-03-24
-updated: 2026-03-28
+updated: 2026-07-08
 up: "[[MOC-시스템]]"
 tags:
   - system/tools
@@ -19,13 +19,13 @@ tags:
 ## 핵심
 
 - [[_system/tools/README|_system/tools/README]]
-- [[nlm]]
 - [[feynman]]
 - [[figma]]
 - [[Kanban]]
 - [[GitHub]]
 - [[graphify]]
 - [[ntn]]
+- [[google-calendar]]
 - [[MAP-스킬]]
 
 ## 뷰
@@ -46,13 +46,13 @@ tags:
 
 > [!abstract]- 그래프 링크
 > - [[_system/tools/README|_system/tools/README]]
-> - [[nlm]]
 > - [[feynman]]
 > - [[figma]]
 > - [[Kanban]]
 > - [[GitHub]]
 > - [[graphify]]
 > - [[ntn]]
+> - [[google-calendar]]
 > - [[MAP-스킬]]
 
 > [!info]- 도구 추가 패턴

@@ -13,6 +13,37 @@ created: 2026-03-24
 
 ---
 
+## 2026-07-11 — v1.10.0: AX 사령탑 프로토콜 + 스킬 카탈로그 + 태그 레지스트리 + Google Calendar
+
+### 변경 내용
+
+**신규 운영 문서 (3종)**
+- `_system/agents/protocols/260621-AX-사령탑-운영-프로토콜.md`: AX 전환 핵심 운영 프로토콜 — AI 사령탑(LLM 에이전트, 24/7) 지휘 계층·역할 경계·승인 게이트·SoT 무결성 원칙·자가증강 스킬 게이트·OPS-ROOM 채널 프리미티브 정의
+- `_system/agents/indexes/스킬-카탈로그.md`: 스킬 카탈로그 인덱스 신규 분리 (CLAUDE.md 인라인 → 독립 파일)
+- `_system/obsidian/maps/MAP-시스템.md`: `_system/` 인프라 전용 맵 노트 신규 생성 (AX 전환 섹션 포함)
+
+**신규 도구 (1종)**
+- `_system/tools/google-calendar/google-calendar.md`: Google Calendar 도구 허브 — 회원 공유 캘린더·운영팀 캘린더 역할 분리, OAuth 연결 전 `.ics` handoff 운영 패턴, AI 사령탑 작업 방식
+
+**수정 스킬 (2종)**
+- `tag-audit/SKILL.md`: 사이드카 파일 처리 추가, Python 감사 스크립트 구조 개선, 섹션 재편
+- `vault-health/SKILL.md`: Section 10 — 일반 .md / 사이드카 .md 분리 처리; Section 11 — `up: "[[MAP-시스템]]"` 필수 필드 추가
+
+**수정 시스템 문서 (3종)**
+- `_system/rules.md`: Section 6 AX 운영 규칙 신규 삽입 (AI 사령탑 위상·볼트 읽기전용 원칙·자가증강 게이트·OPS-ROOM 프리미티브·멤버 응답 경계)
+- `_system/obsidian/maps/MAP-도구.md`: `google-calendar` 추가
+- `_system/obsidian/tag-registry.md`: 전체 태그 섹션 완성 (ops/·session/·type/·research/·system/ 등), 클럽별 고유 태그는 플레이스홀더 패턴으로 대체
+- `_system/tools/README.md`: `google-calendar` 행 추가
+
+### 마이그레이션 노트
+
+- **AX 프로토콜**: `[[260621-AX-사령탑-운영-프로토콜]]` 도입 전에는 `_system/rules.md` Section 6가 비활성이다. AX 전환 실행 시 `(도입 시 활성화)` 주석을 제거하고 프로토콜 전체를 검토한다.
+- **OPS-ROOM 채널**: `#ops-command`, `#ops-hermes`, `#ops-system` 채널명은 Discord 운영 구조에 맞춰 클럽별로 조정한다.
+- **Google Calendar**: OAuth 연결 전에는 `01_ops/calendar/`에 `.ics` 파일을 생성해 수동 import로 운영한다.
+- **태그 레지스트리**: `season/[YYYY-SN]` 패턴을 실제 시즌 태그로 교체한다 (예: `season/2026-S1`).
+
+---
+
 ## 2026-06-20 — v1.9.2: MEMORY.md 구조 스텁 + 도구 레지스트리 갱신
 
 ### 변경 내용

@@ -4,7 +4,7 @@ kind: registry
 area: system
 status: live
 created: 2026-03-24
-updated: 2026-06-20
+updated: 2026-07-08
 up: "[[MAP-도구]]"
 tags:
   - system/tools
@@ -38,6 +38,7 @@ tags:
 | `syncthing` | 2인 이상 로컬 볼트 실시간 파일 동기화 데몬                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | [[syncthing]] | `syncthing/`    | —                           | 없음 (device ID 인증)         |
 | `graphify`  | 볼트(.md) → 지식 그래프 **구조 질의** CLI. `graphify query "<질문>"`(BFS 탐색), `path "A" "B"`(최단경로), `explain "X"`(노드+이웃), `affected "X"`(역추적), 커뮤니티 탐지·허브노드. **메모리OS 역할 분담**: `memory.recall`(벡터 DB)은 유사도 기반 회상, graphify는 연결 구조("어떻게 이어지나") 전용 — 겹치는 부분은 graphify는 구조 질의에만 쓴다. **정식 등록(2026-06-08)** — 구조 질의 전용, `memory.recall`(유사도)과 병행 운용. 설치: `~/.local/bin/graphify` v0.8.36 (`uv tool install graphifyy`), 격리 설치. **그래프 빌드·증분 갱신은 `bash _system/tools/graphify/graph-update.sh`**(텍스트=DeepSeek/이미지=Haiku 하이브리드, `--images`로 이미지 비전). ⚠️ 한글 .md 의미추출은 LLM 비용 반복(매 갱신 ~$0.1 DeepSeek). 출력: `_system/graphify-out/`(파생물, .gitignore). **always-on 주입 금지 — on-demand 전용(`/graphify`)**. | [[graphify]]  | `graphify-out/` | `.claude/skills/graphify/`  | 없음                        |
 | `ntn`       | Notion 공식 CLI (Beta) — 페이지·파일·DB를 터미널에서 직접 조작. `ntn pages`(Markdown 읽기·쓰기), `ntn files`(이미지·SVG·PDF·외부URL 업로드), `ntn api`(원시 API 호출). 인증 2트랙: `ntn api`/`ntn files`는 OAuth keychain(`ntn login`), `ntn pages`는 `NOTION_API_TOKEN`. 설치: `~/.local/bin/ntn` v0.14.2. | [[ntn]]       | `ntn/`          | —                           | `NOTION_API_TOKEN`          |
+| `google-calendar` | Google Calendar — [클럽명] Club/Ops 공유 캘린더. 회원용은 세션·공개 모집·공개 마감, 운영팀용은 운영회의·준비 마감·예약 확인을 관리한다. Google OAuth 연결 전에는 `.ics` handoff로 운영하고, API 연결 후에는 운영자 승인 뒤 생성·수정한다. | [[google-calendar]] | `google-calendar/` | AI 사령탑 `google-workspace` | Google OAuth / `.ics` |
 | `skillspector` | 외부 AI 에이전트 스킬 보안 스캐너 — 설치 전 **정적 분석**(64패턴/16카테고리: 프롬프트 인젝션·데이터 유출·권한상승 등) + 선택적 LLM 의미분석. `skillspector scan <경로\|URL\|zip>` (`--no-llm` 정적만, `--format terminal\|json\|markdown\|sarif`). 설치 v2.2.3 (격리 uv venv, `make install`). **폴더 전체 .gitignore/.stignore 제외**(머신 로컬 재설치). 사용 전 `source skillspector/.venv/bin/activate`. | — | `skillspector/` | — | 없음 |
 | `im-not-ai` | 외부 AI 스킬 패키지 — 스킬·에이전트를 `~/.claude/`에 **전역 심링크** 설치(`./install.sh --claude-only`). **폴더 전체 .gitignore/.stignore 제외**(심링크 설치원). 업데이트 `./update.sh` · 제거 `./uninstall.sh`. 설치 전 skillspector 보안 스캔 권장. | — | `im-not-ai/` | `~/.claude/skills/[스킬명]` (전역) | 없음 |
 

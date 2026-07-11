@@ -69,17 +69,19 @@ description: 네이밍·메타데이터·링크·깊이 위생 점검
 - 고아 파일은 WARNING으로 보고 (삭제 아님 — 링크 추가 권고).
 
 ### 10. 태그 레지스트리 검증
-- 볼트 전체에서 사용된 태그를 수집하고 `_system/obsidian/tag-registry.md`에 등록된 태그와 비교한다.
-- 수집 방법:
-  ```bash
-  # frontmatter의 tags: 배열에서 수집
-  grep -rh "^  - " . --include="*.md" | grep -E "^\s+- [a-z]" | sort -u
-  # 또는 Obsidian CLI
-  obsidian tags sort=name
-  ```
+
+정본 레지스트리: `_system/obsidian/tag-registry.md`. 상세 감사는 `/tag-audit` 스킬로 수행한다.
+
+**일반 .md 파일**
+- 볼트 전체에서 사용된 태그를 수집하고 레지스트리와 비교한다.
 - **미등록 태그**: 레지스트리에 없는 태그 → WARNING
 - **사용 안 된 태그**: 레지스트리에는 있지만 볼트에서 0번 사용 → INFO
 - `05_library/seasons/2025-pre/` 아카이브의 태그는 검사 제외.
+
+**사이드카 .md 파일** (`*.jpeg.md`, `*.jpg.md`, `*.png.md`, `*.webp.md`)
+- 별도 규약 적용: `studio/*`, `style/*`, `session/*` 네임스페이스 태그만 허용.
+- 평탄 태그(`lego`, `character`, `toy-photo` 등) → CRITICAL
+- 규약 정본: `04_studio/brand/lego/프롬프트-사이드카-규약.md`
 
 ### 11. 결과 저장
 
@@ -90,6 +92,7 @@ frontmatter·섹션 구조는 [[_system/obsidian/audits/README|진단 감사 저
 - `source_skill: vault-health`
 - `kind: audit`
 - `area: system`
+- `up: "[[MAP-시스템]]"`
 
 본문 구조: 요약 → CRITICAL → WARNING → INFO → 이행 항목
 
