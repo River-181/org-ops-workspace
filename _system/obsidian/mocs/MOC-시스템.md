@@ -25,6 +25,7 @@ tags:
 - [[design]] — Obsidian 설계 문서 허브
 - [[rules]]
 - [[identity]]
+- [[260711-git운영-접근통제-아키텍처]] — git 커밋/푸시 권한·GitHub 접근통제·잔여 리스크
 
 ## 에이전트 시스템
 
