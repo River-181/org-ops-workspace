@@ -54,7 +54,11 @@ drop_status: ready      # ready 여야만 실행
 \`\`\`
 ```
 
-이미지 파일은 `04_studio/drops/` 에 존재해야 함.
+**이미지 임베드는 두 가지 형식을 지원함** (`extract_gongyoo_sections()`가 슬래시 유무로 구분):
+- `![[04_studio/assets/etc/파일명.png|700]]` — 전체 경로(볼트 루트 기준). 04_studio/assets/README.md 정본 규칙, 신규 드롭은 이 형식을 쓸 것.
+- `![[파일명.png|700]]` — 바레 파일명. 드롭 파일과 같은 폴더(`04_studio/drops/`)에 이미지가 있을 때만 동작(구형 드롭 호환용).
+
+임베드 경로에 실제 파일이 없으면 에러 없이 그냥 조용히 건너뛴다(`os.path.exists` 실패 시 무음 skip) — 발행 전 이미지 경로가 실제로 존재하는지 확인할 것.
 
 ---
 

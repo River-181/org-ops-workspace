@@ -4,6 +4,7 @@ kind: reference
 area: system
 status: draft
 created: 2026-06-09
+up: "[[_system/reference/README]]"
 tags: [platform/claude-code, type/guide]
 ---
 

@@ -15,7 +15,41 @@ allowed-tools: Read, Glob, Grep
 ### 1. 위키링크 수집
 
 - 모든 .md 파일에서 `[[...]]` 패턴을 추출한다.
+- 코드펜스(``` ```)와 인라인 코드(`` ` ``) 안의 `[[ ]]`(예: bash `[[ "$x" == ... ]]`)는 스캔에서 제외한다 — 위키링크가 아니라 오탐 원인이다.
 - 파일별 발신 링크(outgoing)와 수신 링크(incoming) 수를 집계한다.
+
+**NFC 정규화 필수**: macOS 파일시스템은 한글 파일명을 NFD(자모 분리)로 저장하지만 마크다운 본문의 링크 텍스트는 보통 NFC(완성형)다. 정규화 없이 바이트 비교하면 멀쩡한 한글 링크가 대량으로 "깨진 링크"로 오탐된다. 파일명 인덱스 구축 시와 링크 텍스트 비교 시 양쪽 모두 `unicodedata.normalize('NFC', s)`를 적용한다.
+
+**링크 대상 매칭 규칙**:
+- 확장자 유무 양쪽을 허용한다(`파일.md` ↔ `파일`).
+- `[[경로/파일|별칭#헤딩]]` 형태는 `|`(별칭) · `#`(헤딩) · 경로 · 이스케이프(`\`)를 제거한 뒤 basename만으로도 매칭을 시도한다.
+
+```python
+import unicodedata, re
+from pathlib import Path
+
+def nfc(s: str) -> str:
+    return unicodedata.normalize('NFC', s)
+
+def strip_code(text: str) -> str:
+    """코드펜스·인라인 코드 제거 후 위키링크만 스캔 대상으로 남긴다."""
+    text = re.sub(r'```.*?```', '', text, flags=re.S)
+    text = re.sub(r'`[^`\n]*`', '', text)
+    return text
+
+def link_basename(link: str) -> str:
+    """[[경로/파일|별칭#헤딩]] -> 'file' (확장자·경로·별칭·헤딩 제거)"""
+    target = link.split('|')[0].split('#')[0].strip().replace('\\', '')
+    name = Path(target).name
+    return nfc(name).removesuffix('.md')
+
+# 파일명 인덱스: basename(확장자 제거) -> NFC 정규화
+file_index = {nfc(p.stem): p for p in Path('.').rglob('*.md')}
+
+# 링크 존재 여부 = basename 기준, 확장자 유무 무관
+def link_exists(link: str) -> bool:
+    return link_basename(link) in file_index
+```
 
 ### 2. 고아 파일 탐지
 
@@ -101,6 +135,7 @@ frontmatter·섹션 구조는 [[_system/obsidian/audits/README|진단 감사 저
 - `source_skill: link-audit`
 - `kind: audit`
 - `area: system`
+- `up: "[[MAP-시스템]]"`
 
 본문 구조: 요약 → CRITICAL → WARNING → INFO → 이행 항목
 
