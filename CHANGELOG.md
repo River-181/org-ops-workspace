@@ -13,6 +13,28 @@ created: 2026-03-24
 
 ---
 
+## 2026-07-24 — v1.11.0: content-skills 영문 글쓰기 5종 + git 접근통제 아키텍처
+
+### 변경 내용
+
+**신규 문서 (1종)**
+- `_system/obsidian/design/260711-git운영-접근통제-아키텍처.md`: git·GitHub 접근통제 설계 정본 — SoT 원칙, Syncthing→맥→GitHub push 흐름, 브랜치 보호, 보안 근거, PII 잔여 리스크, 커밋 정책, 에이전트 수칙 포함
+
+**수정 시스템 문서 (2종)**
+- `_system/agents/indexes/스킬-카탈로그.md`: 영문 글쓰기 content-skills 섹션 신설 (dumbify·storytelling·viral-hooks·anti-ai-writing·voice-dna)
+- `_system/tools/README.md`: im-not-ai 설치방식 마켓플레이스 플러그인으로 갱신 + content-skills 도구 행 추가
+
+**수정 맵 (1종)**
+- `_system/obsidian/mocs/MOC-시스템.md`: git 접근통제 아키텍처 문서 링크 추가
+
+### 마이그레이션 노트
+
+- content-skills 도입 시: `_system/tools/content-skills/` 폴더 생성 후 외부 `artemnovitckii/content-skills`를 배치, SKILL.md 있는 4종(`dumbify`·`storytelling`·`viral-hooks`·`anti-ai-writing`)을 `~/.claude/skills/`에 심링크. `voice-dna`는 가이드 폴더로만 보관.
+- git 아키텍처 문서의 `[운영자계정]`, `[협업자계정]` 플레이스홀더를 실제 GitHub 계정명으로 교체.
+- Section 8 조치 이력 테이블에 실제 적용 날짜와 내용을 기록.
+
+---
+
 ## 2026-07-11 — v1.10.0: AX 사령탑 프로토콜 + 스킬 카탈로그 + 태그 레지스트리 + Google Calendar
 
 ### 변경 내용
